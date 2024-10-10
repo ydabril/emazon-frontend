@@ -1,0 +1,42 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+$header-height: 75px;
+
+.header {
+    width: 100%;
+    height: $header-height;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.1);
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &--text {
+            font-family: 'Poppins';
+            font-weight: 600;
+        }
+    } 
+}
+
+.nav-menu {
+    position: fixed;
+    width: 0;
+    height: calc(100% - $header-height);
+    background-color: $color-purple;
+    transition: 0.3s;
+}
+
+.nav-menu-expand {
+    width: 270px;
+}
+
+.dashboard-container {
+    width: 100%;
+    height: calc(100vh - $header-height);
+    background-color: $color-bg-light-grey;
+}
