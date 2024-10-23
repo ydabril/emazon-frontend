@@ -1,0 +1,26 @@
+<div class="pagination">
+    <button 
+      class="pagination__arrow" 
+      (click)="prevPage()" 
+      *ngIf="showArrowLeft"
+    >
+      <img [src]="pathArrowLeft" alt="Arrow left" />
+    </button>
+    <button 
+      class="page" 
+      (click)="changePage($event)" 
+      *ngFor="let page of [].constructor(totalPages); let indexPage = index"
+    >
+      <span 
+        class="page__number" 
+        [ngClass]="{'page__number--active': indexPage === currentPage}"
+      >{{ indexPage + 1 }}</span>
+    </button>
+    <button 
+      class="pagination__arrow" 
+      (click)="nextPage()" 
+      *ngIf="showArrowRight"
+    >
+      <img [src]="pathArrowRight" alt="Arrow right" />
+    </button>
+  </div>

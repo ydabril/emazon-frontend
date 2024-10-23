@@ -1,0 +1,27 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.dropdown {
+  display: flex;
+  gap: 5px;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+  }
+}
+
+.select {
+  border: none;
+  color: $color-purple;
+  cursor: pointer;
+
+  &__option {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}

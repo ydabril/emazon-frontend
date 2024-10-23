@@ -1,0 +1,44 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: $color-black;
+  height: 24px;
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s ease all;
+  }
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  &__number {
+    font-size: 16px;
+    font-weight: 300;
+
+    &--active {
+      color: $color-purple;
+      font-weight: 700;
+      transform: translateY(-4px);
+    }
+  }
+}

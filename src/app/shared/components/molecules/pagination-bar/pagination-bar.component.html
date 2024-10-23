@@ -1,0 +1,4 @@
+<div class="pagination-bar" [formGroup]="paginationForm">
+    <dropdown-table formControlName="sortDirection" (optionChange)="onOptionChange('sortDirection', $event)" [label]="'ordenar'" [options]="dropDounOrderOptions"></dropdown-table>
+    <dropdown-table formControlName="size" (optionChange)="onOptionChange('size', $event)" [label]="'mostrar'" [options]="dropDounSizeOptions"></dropdown-table>
+</div>

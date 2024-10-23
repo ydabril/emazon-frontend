@@ -1,0 +1,61 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $color-white;
+
+    thead {
+        background-color: $color-white;
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: bold;
+            color: $color-black;
+            font-size: 16px;
+            border-top: 2px solid $color-spacer-light;
+            border-bottom: 2px solid $color-spacer-light;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background-color: $color-bg-light-grey;
+            }
+
+            &:nth-child(even) {
+                background-color: $color-white;
+            }
+
+            td {
+                padding: 12px 16px;
+                font-size: 16px;
+                color: $color-black;
+                border-bottom: none;
+            }
+        }
+    }
+
+    th,
+    td {
+        border: none;
+    }
+
+    tbody tr {
+        &:hover {
+            background-color: $color-purple;
+            color: $color-white;
+
+            td {
+                color: $color-white;
+            }
+        }
+    }
+
+    @media(min-width: 768px) {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
