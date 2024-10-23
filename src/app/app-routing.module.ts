@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,7 @@ const appRoute: Routes = [
 
 @NgModule({
   imports: [
+    HttpClientModule,
     RouterModule.forRoot(appRoute, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })

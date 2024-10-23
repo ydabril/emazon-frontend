@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="content-modal">
+    <span class="content-modal--close" (click)="closeModal()">
+      <img [src]="closeIcon" alt="">
+    </span>
+    <div class="content-modal--elements">
+      <img [src]="icon" alt="">
+      <h1>{{ title }}</h1>
+      <p>{{ message }}</p>
+      <app-button (click)="closeModal()" ButtonMedium>Okay</app-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.is-invalid {
+    border: 1px solid $color-error;
+}

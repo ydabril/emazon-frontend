@@ -1,3 +1,4 @@
 export enum ProvidersWebApp  {
-    adminCategortPresenter = 'adminCategoryPresenter'
+    adminCategoryPresenter = 'adminCategoryPresenter',
+    adminBrandPresenter = 'adminBrandPresenter'
 }

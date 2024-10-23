@@ -1,0 +1,10 @@
+<div class="content-modal">
+  <div [ngClass]="{'modal-show': showForm}" class="modal">
+    <span class="close" (click)="closeForm()">
+      <img [src]="closeIcon" alt="">
+    </span>
+
+    <h2 class="modal-title">{{ modalTitle }}</h2>
+    <app-form (categoryRequestEvent)="saveCategory($event)"></app-form>
+  </div>
+</div>

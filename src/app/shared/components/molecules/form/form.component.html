@@ -1,0 +1,39 @@
+<form [formGroup]="categoryForm" (ngSubmit)="saveCategory()">
+  <div class="form-group">
+    <label for="document">Nombre</label>
+    <app-input
+      InputDefault
+      [isInvalid]="name.invalid && name.touched"
+      rdInputWithBorderBottom
+      formControlName="name"
+      rdPlaceholder="Nombre de la categoria"
+    ></app-input>
+    <span *ngIf="name.hasError('required') && name.touched">
+      El nombre de la categoría es obligatorio.
+    </span>
+    <span *ngIf="name.hasError('maxlength') && name.touched">
+      El nombre no puede tener más de 50 caracteres.
+    </span>
+  </div>
+  
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <app-textarea
+      [isInvalid]="description.invalid && description.touched"
+      placeholder="Descripción de la categoría"
+      formControlName="description"
+    ></app-textarea>
+    <span *ngIf="description.hasError('required') && description.touched">
+      La descripción es obligatoria.
+    </span>
+    <span *ngIf="description.hasError('maxlength') && description.touched">
+      La descripción no puede tener más de 90 caracteres.
+    </span>
+  </div>
+
+  <app-button
+    ButtonMedium
+    (click)="saveCategory()"
+    [disabled]="categoryForm.invalid"
+    >Guardar</app-button>
+</form>

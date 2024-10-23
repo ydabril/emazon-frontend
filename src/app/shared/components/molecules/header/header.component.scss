@@ -1,0 +1,27 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+$header-height: 75px;
+
+.header {
+    position: relative;
+    background-color: $color-white;
+    width: 100%;
+    height: $header-height;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &--text {
+            font-family: 'Poppins';
+            font-weight: 600;
+        }
+    } 
+}

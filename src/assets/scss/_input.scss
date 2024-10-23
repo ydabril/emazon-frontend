@@ -1,0 +1,28 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.em-input {
+  @mixin input-basic-styles {
+    border: 1px solid $color-spacer-light;
+    height: 44px;
+    width: 260px;
+    font-family: 'Poppins';
+
+    &::placeholder {
+      color: $color-grey;
+      font-size: 12px;
+      font-family: 'Poppins';
+      font-weight: 400px;
+      padding-left: 5px;
+    }
+
+    &:focus {
+      outline: 1px solid $color-purple;
+    }
+  }
+
+  &--default {
+    input {
+      @include input-basic-styles;
+    }
+  }
+}

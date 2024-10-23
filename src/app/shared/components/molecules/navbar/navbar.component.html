@@ -1,0 +1,13 @@
+<div class="nav-menu" [ngClass]="{'nav-menu-expand': navMenuExpamded}">
+  <ul>
+    <li routerLinkActive="link-active">
+      <img [src]="configIcon">
+      <a [routerLink]="['/admin-category']">Administrar Categorias</a>
+    </li>
+
+    <li routerLinkActive="link-active">
+      <img [src]="configIcon">
+      <a [routerLink]="['/admin-brand']">Administrar Marcas</a>
+    </li>
+  </ul>
+</div>

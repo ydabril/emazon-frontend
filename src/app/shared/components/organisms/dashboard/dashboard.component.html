@@ -1,0 +1,6 @@
+<app-header (toggleMenuValue)="toggleNavMenu($event)"></app-header>
+<app-navbar [isNavMenuExpanded]="isNavMenuExpanded"></app-navbar>
+
+<div class="dashboard-container">
+    <ng-content></ng-content>
+</div>

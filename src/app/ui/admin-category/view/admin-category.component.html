@@ -1,14 +1,38 @@
-<div class="header">
-    <div class="header-logo">
-        <img src="/assets/icons/logo.svg" alt="">
-        <h1 class="header-logo--text">EMAZON</h1>
-    </div>
-    <div class="header-menu" (click)="toggleNavMenu()">
-        <img src="/assets/icons/menu-bars.svg" alt="">
-    </div>
-</div>
+<app-modal-category 
+    *ngIf="openForm" 
+    modalTitle="Registrar Categorías"
+    [showForm]="openForm" 
+    (closeFormValue)="closeFormCategory($event)"
+    (categoryRequestEvent)="saveCategory($event)">
+</app-modal-category>
 
-<div class="nav-menu" [ngClass]="{'nav-menu-expand': isNavMenuExpanded}"> 
-</div>
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
 
-<div class="dashboard-container"></div>
+<app-dashboard>
+    <h2>Administrar <span>Categorias</span></h2>
+
+    <div class="add-category-button">
+        <app-button ButtonIcon icon="add" (click)="openFormCategory()">agregar categoria</app-button>
+    </div>
+
+    <app-table 
+        [columns]="categoryColumns" 
+        [tableData]="tableDataCategory"
+        (paginationChange)="getCategorie($event)"
+    ></app-table>
+
+    <app-pagination 
+        [totalPages]="totalPages"
+        [currentPage]="currentPage"
+        [showArrowLeft]="hasPreviousPage"
+        [showArrowRight]="hasNextPage"
+        (pageNumberChange)="nextPage($event)"
+    ></app-pagination>
+</app-dashboard>

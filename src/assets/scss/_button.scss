@@ -1,0 +1,60 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.em-button {
+  @mixin button-basic-styles {
+    background-color: $color-purple;
+    color: $color-white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+
+    &:disabled {
+      background-color: $color-disabled;
+    }
+
+    &:active:not([disabled]) {
+      background-color: $color-purple-dark;
+    }
+
+    &:hover:not([disabled]) {
+      background-color: $color-purple-light;
+    }
+  }
+
+  &--medium {
+    button {
+      @include button-basic-styles;
+      width: 110px;
+      height: 40px;
+    }
+  }
+
+  &--large {
+    button {
+      @include button-basic-styles;
+      width: 165px;
+      height: 50px;
+    }
+  }
+
+  &--icon{
+    button {
+      @include button-basic-styles;
+      width: auto;
+      min-width: 190px;
+      height: 50px;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      align-items: center;
+      gap: 5px;
+      padding: 10px;
+
+      img {
+        filter: invert(100%) sepia(9%) saturate(243%) hue-rotate(157deg) brightness(118%) contrast(107%);
+      }
+    }
+  }
+}

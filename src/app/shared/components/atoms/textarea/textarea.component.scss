@@ -1,0 +1,33 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+textarea {
+  width: 100%;
+  height: 70px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px;
+  resize: none;
+  border: 1px solid $color-spacer-light;
+  border-radius: 2px;
+  transition: .2s ease all;
+
+  &::placeholder {
+    color: $color-grey;
+    font-size: 12px;
+    font-family: 'Poppins';
+    font-weight: 400px;
+  }
+
+  &:focus {
+    outline: 1px solid $color-purple;
+  }
+
+  &:active {
+    color: $color-black;
+  }
+
+  &:disabled {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+  }
+}
