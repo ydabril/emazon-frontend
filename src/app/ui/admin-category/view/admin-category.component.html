@@ -19,7 +19,13 @@
     <h2>Administrar <span>Categorias</span></h2>
 
     <div class="add-category-button">
-        <app-button ButtonIcon icon="add" (click)="openFormCategory()">agregar categoria</app-button>
+        <app-button 
+            ButtonIcon 
+            icon="add" 
+            (keydown)="handleKeyDown($event)" 
+            (click)="openFormCategory()">
+            Agregar categoria
+        </app-button>
     </div>
 
     <app-table 

@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { FormGroup } from '@angular/forms';
 import { EM_ICON } from "src/app/core/constants/em-icons";
-import { CategoryFields } from "src/app/core/constants/enums/categoryFields.enum";
-import { categoryForm } from "src/app/core/forms/category.form";
 import { CategpryRequest } from "src/app/data/network/requests/category.request";
 
 @Component({
@@ -31,5 +29,11 @@ export class ModalCategoryComponent {
 
   saveCategory(categoryRequest: CategpryRequest) {
     this.categoryRequestEvent.emit(categoryRequest);
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.closeForm();
+    }
   }
 }

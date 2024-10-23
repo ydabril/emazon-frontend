@@ -1,6 +1,10 @@
 <div class="content-modal">
   <div [ngClass]="{'modal-show': showForm}" class="modal">
-    <span class="close" (click)="closeForm()">
+    <span
+      class="close"
+      (click)="closeForm()"
+      (keydown)="handleKeyDown($event)"
+      >
       <img [src]="closeIcon" alt="">
     </span>
 

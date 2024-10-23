@@ -26,4 +26,10 @@ export class ModalMessageComponent implements OnInit {
   closeModal() {
     this.closeModalValue.emit();
   }
+  
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.closeModal();
+    }
+  }
 }

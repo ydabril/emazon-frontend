@@ -51,4 +51,10 @@ export class AdminCategoryViewComponent extends AdminCategoryOutputLogic {
     this.page = pageValue;
     this.getCategorie(this.paginationRequest); 
   }
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.openFormCategory();
+    }
+  }
 }

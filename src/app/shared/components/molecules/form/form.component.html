@@ -34,6 +34,9 @@
   <app-button
     ButtonMedium
     (click)="saveCategory()"
+    (keydown)="handleKeyDown($event)" 
     [disabled]="categoryForm.invalid"
-    >Guardar</app-button>
+    >
+    Guardar
+  </app-button>
 </form>
