@@ -1,0 +1,38 @@
+<app-modal-category 
+    *ngIf="openForm" 
+    modalTitle="Registrar Marcas"
+    [showForm]="openForm" 
+    (closeFormValue)="closeFormBrand($event)"
+    (categoryRequestEvent)="saveCategory($event)">
+</app-modal-category>
+
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
+
+<app-dashboard>
+    <h2>Administrar <span>Marcas</span></h2>
+
+    <div class="add-category-button">
+        <app-button ButtonIcon icon="add" (click)="openFormCategory()">Agregar Marca</app-button>
+    </div>
+
+    <app-table 
+        [columns]="brandColumns" 
+        [tableData]="tableDataBrand"
+        (paginationChange)="getBrands($event)"
+    ></app-table>
+
+    <app-pagination 
+        [totalPages]="totalPages"
+        [currentPage]="currentPage"
+        [showArrowLeft]="hasPreviousPage"
+        [showArrowRight]="hasNextPage"
+        (pageNumberChange)="nextPage($event)"
+    ></app-pagination>
+</app-dashboard>
