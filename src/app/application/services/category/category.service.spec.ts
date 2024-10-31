@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { CategpryRequest } from 'src/app/data/network/requests/category.request';
 import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
 import { CategoryResponse } from 'src/app/data/network/responses/category.response';
-import { CategoryService } from 'src/app/application/services/category.service';
+import { CategoryService } from 'src/app/application/services/category/category.service';
 
 describe('CategoryService', () => {
     let service: CategoryService;

@@ -1,0 +1,85 @@
+<form [formGroup]="articleForm">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <app-input
+        InputDefault
+        formControlName="name"
+        placeholder="Nombre del articulo"
+        [isInvalid]="name.invalid && name.touched"
+      ></app-input>
+      <span *ngIf="name.hasError('required') && name.touched">El nombre es obligatorio.</span>
+      <span *ngIf="name.hasError('maxlength') && name.touched">El nombre no puede tener más de 50 caracteres.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <app-textarea
+        formControlName="description"
+        placeholder="Descripción del articulo"
+        [isInvalid]="description.invalid && description.touched"
+      ></app-textarea>
+      <span *ngIf="description.hasError('required') && description.touched">La descripción es obligatoria.</span>
+      <span *ngIf="description.hasError('maxlength') && description.touched">Máximo 90 caracteres.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Precio</label>
+      <app-input
+        InputDefault
+        type="number"
+        formControlName="price"
+        placeholder="Precio del articulo"
+        [isInvalid]="price.invalid && price.touched"
+      ></app-input>
+      <span *ngIf="price.hasError('required') && price.touched">El precio es obligatorio.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="quantity">Cantidad</label>
+      <app-input
+        InputDefault
+        type="number"
+        formControlName="quantity"
+        placeholder="Cantidad"
+        [isInvalid]="quantity.invalid && quantity.touched"
+      ></app-input>
+      <span *ngIf="quantity.hasError('required') && quantity.touched">La cantidad es obligatoria.</span>
+    </div>
+  
+    <div class="form-group">
+      <label>Categorías</label>
+      <div formArrayName="categoryIds">
+        <div *ngFor="let categoryCtrl of categoryIds.controls; let i = index">
+          <dropdown-select
+            [options]="categoryList"
+            placeholder="Selecciona una categoría"
+            [isInvalid]="categoryCtrl.invalid && categoryCtrl.touched"
+            [formControlName]="i"
+          ></dropdown-select>
+          <span *ngIf="categoryCtrl.hasError('required') && categoryCtrl.touched">Selecciona una categoria</span>
+          <span *ngIf="categoryCtrl.hasError('duplicateCategory')">No se permiten categorías duplicadas.</span>
+          <button type="button" class="remove-category" (click)="removeCategory(i)">Eliminar</button> 
+        </div>
+      </div>
+      <button type="button" class="add-new-category" (click)="addCategory()" [disabled]="categoryIds.length >= 3">Agregar otra categoría</button>
+      <span *ngIf="categoryIds.hasError('maxCategories')">Máximo 3 categorías permitidas.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="brandId">Marca</label>
+      <dropdown-select
+        [options]="brandList"
+        placeholder="Selecciona una marca"
+        [isInvalid]="brandId.invalid && brandId.touched"
+        formControlName="brandId"
+      ></dropdown-select>
+    </div>
+  
+    <app-button 
+      [disabled]="articleForm.invalid"
+      ButtonMedium
+      (click)="saveArticle()">
+      Guardar
+    </app-button>
+</form>
+  

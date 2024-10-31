@@ -4,5 +4,6 @@ export const EM_ICON: Record<string, string> = {
     error: '/assets/icons/error-icon.svg',
     arrowLeft: '/assets/icons/arrow-left-icon.svg',
     arrowRight: '/assets/icons/arrow-right-icon.svg',
-    config: '/assets/icons/config-icon.svg'
+    config: '/assets/icons/config-icon.svg',
+    arrowDropdown: '/assets/icons/arrow-dropdown-icon.svg'
 }

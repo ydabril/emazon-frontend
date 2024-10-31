@@ -1,10 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProvidersWebApp } from 'src/app/core/constants/enums/providers.enum';
 import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
 import { AdminCategoryViewComponent } from 'src/app/ui/admin-category/view/admin-category..component';
 import { AdminCategoryInputLogic } from 'src/app/ui/admin-category/view/model/admin-category.model';
-
 
 describe('AdminCategoryViewComponent', () => {
   let component: AdminCategoryViewComponent;
@@ -74,5 +72,32 @@ describe('AdminCategoryViewComponent', () => {
     component.nextPage(pageValue);
     expect(component.page).toBe(pageValue);
     expect(mockPresenter.getCategories).toHaveBeenCalledWith(paginationRequest, pageValue);
+  });
+
+  it('should close the modal message', () => {
+    component.showModalMessage = true;
+    component.closeModalMessage();
+    expect(component.showModalMessage).toBe(false);
+  });
+
+  it('should open form when Enter or Space key is pressed', () => {
+    const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
+
+    component.openForm = false;
+    component.handleKeyDown(enterEvent);
+    expect(component.openForm).toBe(true);
+
+    component.openForm = false;
+    component.handleKeyDown(spaceEvent);
+    expect(component.openForm).toBe(true);
+  });
+
+  it('should not open form for other keys', () => {
+    const randomKeyEvent = new KeyboardEvent('keydown', { key: 'A' });
+
+    component.openForm = false;
+    component.handleKeyDown(randomKeyEvent);
+    expect(component.openForm).toBe(false);
   });
 });

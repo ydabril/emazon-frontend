@@ -4,7 +4,7 @@
   @mixin input-basic-styles {
     border: 1px solid $color-spacer-light;
     height: 44px;
-    width: 260px;
+    width: 100%;
     font-family: 'Poppins';
 
     &::placeholder {

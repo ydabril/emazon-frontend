@@ -17,6 +17,10 @@ import { ModalMessageComponent } from "./components/organisms/modal_message/moda
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DirectiveModule } from "../core/directives/directive.module";
 import { RouterModule } from "@angular/router";
+import { DragDropComponent } from "./components/molecules/drag-drop/drag-drop.component";
+import { FormArticleComponent } from "./components/molecules/form_article/form-article.component.";
+import { DropdownSelectComponent } from "./components/atoms/dropdown-select/dropdown-select.component";
+import { ModalArticleComponent } from "./components/organisms/modal_form_article/modal-article.component";
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { RouterModule } from "@angular/router";
     HeaderComponent,
     DasboardComponent,
     FormComponent,
+    DragDropComponent,
+    FormArticleComponent,
+    DropdownSelectComponent,
     ModalCategoryComponent,
+    ModalArticleComponent,
     DropdownTableComponent,
     PaginationBarComponent,
     PaginationComponent,
@@ -51,7 +59,11 @@ import { RouterModule } from "@angular/router";
     HeaderComponent,
     DasboardComponent,
     FormComponent,
+    DragDropComponent,
+    FormArticleComponent,
+    DropdownSelectComponent,
     ModalCategoryComponent,
+    ModalArticleComponent,
     DropdownTableComponent,
     PaginationBarComponent,
     PaginationComponent,

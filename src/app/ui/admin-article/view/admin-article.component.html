@@ -1,0 +1,28 @@
+<app-modal-article 
+    *ngIf="openForm" 
+    modalTitle="Registrar Articulo"
+    [showForm]="openForm" 
+    [categoryList]="listDataCategory"
+    [brandList]="listDataBrand"
+    (closeFormValue)="closeFormArticle($event)"
+    (articleRequestEvent)="saveArticle($event)">
+</app-modal-article>
+
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
+
+<app-dashboard>
+    <h2>Administrar <span>Articulos</span></h2>
+
+    <div class="add-brand-button">
+        <app-button ButtonIcon icon="add" (click)="openFormArticle()">Agregar Articulo</app-button>
+    </div>
+
+
+</app-dashboard>

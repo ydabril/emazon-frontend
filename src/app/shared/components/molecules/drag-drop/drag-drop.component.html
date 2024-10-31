@@ -1,0 +1,12 @@
+<div (click)="fileInput.click()" class="dropzone" (dragover)="onDragOverAction($event)" (drop)="onFileSelected($event)">
+  <img *ngIf="loadImage" class="load-image" [src]="base64Image" />
+  <p class="m-0 text-drop-down">
+    subir imagen
+    <span>
+      carga la imagen en formato jpg, png o jpeg
+    </span>
+  </p>
+
+  <input #fileInput type="file" class="d-none" accept="image/jpeg, image/png, image/jpg"
+    (change)="onFileSelected($event)" />
+</div>

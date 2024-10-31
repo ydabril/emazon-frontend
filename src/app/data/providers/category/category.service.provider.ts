@@ -1,5 +1,5 @@
 import { Provider } from "@angular/core";
-import { CategoryService } from "src/app/application/services/category.service";
+import { CategoryService } from "src/app/application/services/category/category.service";
 
 export const CategoryServiceProvider: Provider = {
   provide: 'categoryService',

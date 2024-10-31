@@ -1,0 +1,22 @@
+<div class="content-modal">
+  <div [ngClass]="{'modal-show': showForm}" class="modal">
+    <span class="close" (click)="closeForm()" (keydown)="handleKeyDown($event)">
+      <img [src]="closeIcon" alt="">
+    </span>
+
+    <h2 class="modal-title">{{ modalTitle }}</h2>
+
+    <div class="modal-form">
+      <div class="modal-drag-drop">
+        <drag-drop></drag-drop>
+      </div>
+      <div class="form-container">
+        <app-form-article 
+          [categoryList]="categoryList" 
+          [brandList]="brandList"
+          (articleRequestEvent)="saveArticle($event)">
+        </app-form-article>
+      </div>
+    </div>
+  </div>
+</div>

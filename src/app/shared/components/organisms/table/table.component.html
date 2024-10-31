@@ -1,6 +1,8 @@
-<pagination-bar (paginationChange)="emitPaginationChange($event)"></pagination-bar>
+<div class="pagination-section">
+  <pagination-bar (paginationChange)="emitPaginationChange($event)"></pagination-bar>
+</div>
 <div class="table-container">
-    <div class="datatable">
-        <data-table [columns]="columns" [rows]="tableData"></data-table>
-    </div>
+  <div class="datatable">
+    <data-table [columns]="columns" [rows]="tableData"></data-table>
+  </div>
 </div>

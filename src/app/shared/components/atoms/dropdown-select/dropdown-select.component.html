@@ -1,0 +1,10 @@
+<div class="em-select">
+  <select [ngClass]="{'is-invalid': isInvalid}" 
+          [value]="value" 
+          (change)="onSelectChange($event)" 
+          (blur)="onBlur()">
+    <option value="" selected>{{ placeholder }}</option>
+    <option *ngFor="let option of options" [value]="option.id">{{ option.name }}</option>
+  </select>
+  <img [src]="arrowDropdown" alt="Arrow Icon" class="em-select__arrow" />
+</div>

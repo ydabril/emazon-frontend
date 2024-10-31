@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { BrandRequest } from 'src/app/data/network/requests/brandRequest';
 import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
 import { BrandResponse } from 'src/app/data/network/responses/brand.response';
-import { BrandService } from 'src/app/application/services/brand.service';
+import { BrandService } from 'src/app/application/services/brand/brand.service';
 
 describe('BrandService', () => {
   let service: BrandService;

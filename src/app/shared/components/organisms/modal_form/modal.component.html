@@ -9,6 +9,11 @@
     </span>
 
     <h2 class="modal-title">{{ modalTitle }}</h2>
-    <app-form (categoryRequestEvent)="saveCategory($event)"></app-form>
+
+    <div class="modal-form">
+      <div class="form-container">
+        <app-form (categoryRequestEvent)="saveCategory($event)"></app-form>
+      </div>
+    </div>
   </div>
 </div>

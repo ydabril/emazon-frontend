@@ -31,7 +31,7 @@ export class AdminCategoryPresenter implements AdminCategoryInputLogic {
     })
   }
 
-  private showSuccessModal(response: HttpResponse<any>) {
+  private showSuccessModal(response: HttpResponse<unknown>) {
     this._view.openForm = false;
     this._view.showModalMessage = true;
     this._view.modalIcon = EM_ICON['success'];

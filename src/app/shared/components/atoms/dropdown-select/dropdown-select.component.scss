@@ -1,0 +1,45 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.em-select {
+  position: relative;
+  width: 100%;
+  font-family: 'Poppins';
+
+  select {
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    padding-right: 30px;
+    border: 1px solid $color-spacer-light;
+    font-size: 12px;
+    color: $color-grey;
+    appearance: none;
+
+    &:focus {
+      outline: 1px solid $color-purple;
+    }
+
+    &.is-invalid {
+      border-color: red;
+    }
+  }
+
+  .em-select__arrow {
+    position: absolute;
+    right: 10px; // Ajusta según el espacio necesario
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; // Asegura que el icono no interfiera con la interacción del select
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Asegura que el ancho de las opciones sea el mismo que el select */
+.em-select select {
+  -webkit-appearance: none; // Oculta el estilo nativo en navegadores webkit
+  -moz-appearance: none; // Oculta el estilo nativo en navegadores Mozilla
+  appearance: none;
+  width: 100%; // Hace que el ancho del desplegable sea el mismo que el del select
+  box-sizing: border-box; // Asegura que el padding no afecte el ancho total
+}
