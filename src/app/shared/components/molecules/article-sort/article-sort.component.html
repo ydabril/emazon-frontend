@@ -1,0 +1,20 @@
+<div class="sort-options">
+  <button 
+    class="sort-option" 
+    [class.active]="selectedSort === sortByOptions.articleName"
+    (click)="selectSortOption(sortByOptions.articleName)">
+    Artículo
+  </button>
+  <button 
+    class="sort-option" 
+    [class.active]="selectedSort === sortByOptions.brandName"
+    (click)="selectSortOption(sortByOptions.brandName)">
+    Marca
+  </button>
+  <button 
+    class="sort-option" 
+    [class.active]="selectedSort === sortByOptions.categories"
+    (click)="selectSortOption(sortByOptions.categories)">
+    Categoría
+  </button>
+</div>

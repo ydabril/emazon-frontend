@@ -1,0 +1,68 @@
+<div class="header">
+  <div class="header-logo">
+    <div class="header-menu">
+      <img src="/assets/icons/menu-bars.svg" alt="">
+    </div>
+    <h1 class="header-logo--text">EMAZON</h1>
+  </div>
+  <div class="header-option">
+    <div class="header-option--cart">
+      <img [src]="cartIcon" alt="">
+    </div>
+    <div class="header-option--user">
+      <img [src]="userIcon" alt="">
+      <p>Log in</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="main-section">
+    <h1>Emazon: Todo lo que necesitas, en un solo Lugar</h1>
+    <p>Descubre una gran variedad de productos de marcas líderes en tecnología, moda, hogar y mucho más.</p>
+    <div class="shop-action-button">
+      <button>Shop now</button>
+    </div>
+
+    <div class="stats">
+      <div class="stats-item">
+        <p><strong>200+</strong></p>
+        <span>International Brands</span>
+      </div>
+      <div class="stats-item">
+        <p><strong>30,000+</strong></p>
+        <span>Happy Customers</span>
+      </div>
+      <div class="stats-item">
+        <p><strong>2,000+</strong></p>
+        <span>High-Quality Products</span>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <div class="brand-section--item">
+        <p>MARCA 1</p>
+      </div>
+      <div class="brand-section--item">
+        <p>MARCA 2</p>
+      </div>
+      <div class="brand-section--item">
+        <p>MARCA 3</p>
+      </div>
+    </div>
+  </div>
+
+  <article-list 
+    (paginationChange)="getArticles($event)"
+    (sortChange)="sortByChange($event)"
+    [articleList]="listDataArticle">
+  </article-list>
+
+  <app-pagination 
+    [totalPages]="totalPages"
+    [currentPage]="currentPage"
+    [showArrowLeft]="hasPreviousPage"
+    [showArrowRight]="hasNextPage"
+    (pageNumberChange)="nextPage($event)"
+  ></app-pagination>
+</div>

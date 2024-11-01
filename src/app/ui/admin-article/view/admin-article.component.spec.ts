@@ -97,7 +97,7 @@ describe('AdminArticleViewComponent', () => {
     expect(component.showModalMessage).toBe(true);
     expect(component.modalIcon).toBe('/assets/icons/success-icon.svg');
     expect(component.modalTitle).toBe("Proceso existoso");
-    expect(component.modalMessage).toBe("Categoria creada correctamente");
+    expect(component.modalMessage).toBe("Articulo creado correctamente");
   });
 
   it('should show error modal on save article failure', () => {

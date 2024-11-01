@@ -5,5 +5,7 @@ export const EM_ICON: Record<string, string> = {
     arrowLeft: '/assets/icons/arrow-left-icon.svg',
     arrowRight: '/assets/icons/arrow-right-icon.svg',
     config: '/assets/icons/config-icon.svg',
-    arrowDropdown: '/assets/icons/arrow-dropdown-icon.svg'
+    arrowDropdown: '/assets/icons/arrow-dropdown-icon.svg',
+    user: '/assets/icons/user-icon.svg',
+    cart: '/assets/icons/cart-icon.svg'
 }

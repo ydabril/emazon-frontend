@@ -1,0 +1,37 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.sort-options {
+  display: inline-flex;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+
+  .sort-option {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:not(:last-child) {
+      border-right: 1px solid #e0e0e0;
+    }
+
+    &.active {
+      color: $color-purple !important;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: #333;
+    }
+
+    &:active {
+      color: $color-purple !important;
+      font-weight: bold;
+    }
+  }
+}

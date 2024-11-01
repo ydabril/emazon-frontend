@@ -1,0 +1,22 @@
+<div class="article-card">
+  <div class="product-image">
+    <img src="/assets/images/article-placeholder2.jpeg" [alt]="articleData.name">
+  </div>
+  <div class="product-details">
+    <div class="product-details--text">
+      <h3 class="product-title">{{ articleData.name }}</h3>
+      <span>{{ articleData.brand.name }}</span>
+    </div>
+    <div class="product-rating">
+      <span>⭐⭐⭐⭐☆</span>
+      <span class="rating-value">3.5/5</span>
+    </div>
+    <div class="product-price">
+      <div>
+        <span class="discounted-price">${{ articleData.price }}</span>
+        <span class="original-price">${{ articleData.price + 100}}</span>
+      </div>
+      <span class="discount-percentage">-20%</span>
+    </div>
+  </div>
+</div>

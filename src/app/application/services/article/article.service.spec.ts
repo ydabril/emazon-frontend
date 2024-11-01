@@ -3,6 +3,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ArticleService } from './article.service';
 import { environment } from 'src/environments/environment';
 import { ArticleRequest } from 'src/app/data/network/requests/articleRequest';
+import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
+import { ArticleResponse } from 'src/app/data/network/responses/article.response';
+import { HttpResponse } from '@angular/common/http';
 
 describe('ArticleService', () => {
   let service: ArticleService;
@@ -44,5 +47,65 @@ describe('ArticleService', () => {
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(articleRequest);
     req.flush({});
+  });
+
+  it('should call the correct API endpoint to get articles with pagination', () => {
+    const paginationRequest: PaginationRequest = {
+      size: 10,
+      sortDirection: 'ASC'
+    };
+    const page = 1;
+    const sortByValue = 'name';
+    const mockResponse: ArticleResponse = {
+      list: [
+        { 
+          name: 'Test Article',
+          price: 50, 
+          quantity: 5, 
+          categories: [{
+            id: 1,
+            name: 'name',
+            description: 'description'
+          }], 
+          brand: {
+            id: 1,
+            name: 'name',
+            description: 'description'
+          }
+
+        }],
+        currentPage: 0,
+        pageSize: 10,
+        totalElements: 10,
+        totalPages: 1,
+        hasNextPage: true,
+        hasPreviousPage: true
+    };
+
+    service.getArticles(paginationRequest, page, sortByValue).subscribe((response) => {
+      expect(response.body).toEqual(mockResponse);
+    });
+
+    const req = httpMock.expectOne(`${environment.API_URL}/article?sortBy=name&sortDirection=ASC&page=1&size=10`);
+    expect(req.request.method).toBe('GET');
+    req.flush(new HttpResponse({ body: mockResponse }));
+  });
+
+  it('should handle error when getArticles fails', () => {
+    const paginationRequest: PaginationRequest = {
+      size: 10,
+      sortDirection: 'ASC'
+    };
+    const page = 1;
+    const sortByValue = 'name';
+    const errorMessage = 'Failed to fetch articles';
+
+    service.getArticles(paginationRequest, page, sortByValue).subscribe(
+      () => fail('Expected an error, not articles'),
+      (error) => expect(error.message).toContain(errorMessage)
+    );
+
+    const req = httpMock.expectOne(`${environment.API_URL}/article?sortBy=name&sortDirection=ASC&page=1&size=10`);
+    req.flush(errorMessage, { status: 500, statusText: 'Server Error' });
   });
 });

@@ -21,6 +21,9 @@ import { DragDropComponent } from "./components/molecules/drag-drop/drag-drop.co
 import { FormArticleComponent } from "./components/molecules/form_article/form-article.component.";
 import { DropdownSelectComponent } from "./components/atoms/dropdown-select/dropdown-select.component";
 import { ModalArticleComponent } from "./components/organisms/modal_form_article/modal-article.component";
+import { ArticleCardComponent } from "./components/molecules/article-cad/article-card.component";
+import { ArticleListComponent } from "./components/organisms/article-list/article-list.component";
+import { ArticleSortComponent } from "./components/molecules/article-sort/article-sort.component";
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import { ModalArticleComponent } from "./components/organisms/modal_form_article
     PaginationComponent,
     TableComponent,
     DataTableComponent,
-    ModalMessageComponent
+    ModalMessageComponent,
+    ArticleSortComponent,
+    ArticleCardComponent,
+    ArticleListComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +75,10 @@ import { ModalArticleComponent } from "./components/organisms/modal_form_article
     PaginationComponent,
     TableComponent,
     DataTableComponent,
-    ModalMessageComponent
+    ModalMessageComponent,
+    ArticleSortComponent,
+    ArticleCardComponent,
+    ArticleListComponent
   ]
 })
 export class SharedModule { }
