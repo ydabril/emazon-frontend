@@ -24,6 +24,7 @@ import { ModalArticleComponent } from "./components/organisms/modal_form_article
 import { ArticleCardComponent } from "./components/molecules/article-cad/article-card.component";
 import { ArticleListComponent } from "./components/organisms/article-list/article-list.component";
 import { ArticleSortComponent } from "./components/molecules/article-sort/article-sort.component";
+import { FormUserComponent } from "./components/molecules/form-user/form-user.component.";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ArticleSortComponent } from "./components/molecules/article-sort/articl
     FormComponent,
     DragDropComponent,
     FormArticleComponent,
+    FormUserComponent,
     DropdownSelectComponent,
     ModalCategoryComponent,
     ModalArticleComponent,
@@ -67,6 +69,7 @@ import { ArticleSortComponent } from "./components/molecules/article-sort/articl
     FormComponent,
     DragDropComponent,
     FormArticleComponent,
+    FormUserComponent,
     DropdownSelectComponent,
     ModalCategoryComponent,
     ModalArticleComponent,

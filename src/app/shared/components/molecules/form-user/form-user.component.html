@@ -1,0 +1,98 @@
+<form [formGroup]="userForm">
+  <div class="form-group">
+    <label for="firstName">Nombre</label>
+    <app-input
+      InputDefault
+      formControlName="firstName"
+      placeholder="Primer nombre"
+      [isInvalid]="firstName.invalid && firstName.touched"
+    ></app-input>
+    <span *ngIf="firstName.hasError('required') && firstName.touched">El nombre es obligatorio.</span>
+    <span *ngIf="firstName.hasError('maxlength') && firstName.touched">El nombre no puede tener más de 50 caracteres.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="lastName">Apellido</label>
+    <app-input
+      InputDefault
+      formControlName="lastName"
+      placeholder="Apellido"
+      [isInvalid]="lastName.invalid && lastName.touched"
+    ></app-input>
+    <span *ngIf="lastName.hasError('required') && lastName.touched">El apellido es obligatorio.</span>
+    <span *ngIf="lastName.hasError('maxlength') && lastName.touched">El apellido no puede tener más de 50 caracteres.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="documentNumber">Número de documento</label>
+    <app-input
+      InputDefault
+      formControlName="documentNumber"
+      placeholder="Número de documento"
+      [isInvalid]="documentNumber.invalid && documentNumber.touched"
+      type="text"
+    ></app-input>
+    <span *ngIf="documentNumber.hasError('required') && documentNumber.touched">El número de documento es obligatorio.</span>
+    <span *ngIf="documentNumber.hasError('pattern') && documentNumber.touched">El documento debe ser únicamente numérico.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="phoneNumber">Número de teléfono</label>
+    <app-input
+      InputDefault
+      formControlName="phoneNumber"
+      placeholder="Número de teléfono"
+      [isInvalid]="phoneNumber.invalid && phoneNumber.touched"
+      type="text"
+    ></app-input>
+    <span *ngIf="phoneNumber.hasError('maxlength') && phoneNumber.touched">El teléfono no puede tener más de 13 caracteres.</span>
+    <span *ngIf="phoneNumber.hasError('pattern') && phoneNumber.touched">El teléfono debe ser un número válido y puede empezar con '+'.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="birthdate">Fecha de nacimiento</label>
+    <app-input
+      InputDefault
+      formControlName="birthdate"
+      placeholder="Fecha de nacimiento"
+      [isInvalid]="birthdate.invalid && birthdate.touched"
+      type="date"
+    ></app-input>
+    <span *ngIf="birthdate.hasError('required') && birthdate.touched">La fecha de nacimiento es obligatoria.</span>
+    <span *ngIf="birthdate.hasError('underage') && birthdate.touched">Debe ser mayor de 18 años.</span>
+    <span *ngIf="birthdate.hasError('futureDate') && birthdate.touched">La fecha de nacimiento no puede ser en el futuro.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <app-input
+      InputDefault
+      formControlName="email"
+      placeholder="Correo electrónico"
+      [isInvalid]="email.invalid && email.touched"
+      type="email"
+    ></app-input>
+    <span *ngIf="email.hasError('required') && email.touched">El correo electrónico es obligatorio.</span>
+    <span *ngIf="email.hasError('email') && email.touched">Ingrese un correo electrónico válido.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <app-input
+      InputDefault
+      formControlName="password"
+      placeholder="Contraseña"
+      [isInvalid]="password.invalid && password.touched"
+      type="password"
+    ></app-input>
+    <span *ngIf="password.hasError('required') && password.touched">La contraseña es obligatoria.</span>
+    <span *ngIf="password.hasError('minlength') && password.touched">La contraseña debe tener al menos 8 caracteres.</span>
+  </div>
+
+  <app-button 
+    [disabled]="userForm.invalid"
+    ButtonMedium
+    (click)="saveUser()">
+    Guardar
+  </app-button>
+</form>

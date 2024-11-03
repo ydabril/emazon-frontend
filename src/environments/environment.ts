@@ -1,6 +1,7 @@
 import { Environment } from "src/app/domain/interfaces/enviroment.interface";
 
-export const environment: Environment = {
+export const environment = {
   production: false,
   API_URL: 'http://localhost:8081',
+  API_URL_USER: 'http://localhost:8082',
 };

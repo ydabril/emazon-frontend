@@ -1,5 +1,6 @@
 export enum ProviderServices {
     categoryService = 'categoryService',
     brandService = 'brandService',
-    articleService = 'articleService'
+    articleService = 'articleService',
+    userService = 'userService'
 }

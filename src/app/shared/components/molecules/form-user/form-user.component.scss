@@ -1,0 +1,43 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+form {
+  margin-top: 30px;
+
+  label {
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 500;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  span {
+    display: flex;
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: $color-error;
+    min-width: 220px;
+  }
+
+  .remove-category {
+    font-family: 'Poppins';
+    font-size: 14px;
+    background-color: $color-error;
+    color: $color-white;
+    padding: 2px 5px;
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  .add-new-category {
+    font-family: 'Poppins';
+    font-size: 14px;
+    background-color: $color-purple;
+    color: $color-white;
+    border: none;
+  }
+}

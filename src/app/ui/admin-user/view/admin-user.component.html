@@ -1,0 +1,32 @@
+<app-modal-article 
+    *ngIf="openForm" 
+    modalTitle="Registrar Usuario"
+    [showForm]="openForm" 
+    (closeFormValue)="closeFormUser($event)">
+    <div class="modal-form">
+        <div class="form-container">
+          <app-form-user 
+          (userRequestEvent)="saveUser($event)">
+          </app-form-user>
+        </div>
+      </div>
+</app-modal-article>
+
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
+
+<app-dashboard>
+    <h2>Administrar <span>Usuarios</span></h2>
+
+    <div class="add-brand-button">
+        <app-button ButtonIcon icon="add" (click)="openFormUser()">Agregar Usuario aux bodega</app-button>
+    </div>
+
+
+</app-dashboard>

@@ -6,17 +6,6 @@
 
     <h2 class="modal-title">{{ modalTitle }}</h2>
 
-    <div class="modal-form">
-      <div class="modal-drag-drop">
-        <drag-drop></drag-drop>
-      </div>
-      <div class="form-container">
-        <app-form-article 
-          [categoryList]="categoryList" 
-          [brandList]="brandList"
-          (articleRequestEvent)="saveArticle($event)">
-        </app-form-article>
-      </div>
-    </div>
+    <ng-content></ng-content>
   </div>
 </div>
