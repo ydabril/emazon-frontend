@@ -8,13 +8,13 @@
       <img [src]="configIcon">
       <a [routerLink]="['/admin-brand']">Administrar Marcas</a>
     </li>
-    <li *ngIf="userRole === 'ROLE_AUX_BODEGA'" routerLinkActive="link-active">
+    <li *ngIf="userRole === 'ROLE_AUX_BODEGA' || userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
       <img [src]="configIcon">
       <a [routerLink]="['/admin-article']">Administrar Artículos</a>
     </li>
     <li *ngIf="userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
       <img [src]="configIcon">
-      <a [routerLink]="['/admin-article']">Administrar Usuarios</a>
+      <a [routerLink]="['/admin-user']">Administrar Usuarios</a>
     </li>
   </ul>
 </div>

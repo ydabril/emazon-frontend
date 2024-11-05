@@ -1,0 +1,22 @@
+<form [formGroup]="supplyForm">
+  <div class="form-group">
+    <label for="quantity">Cantidad</label>
+    <app-input
+      InputDefault
+      type="number"
+      formControlName="quantity"
+      placeholder="Cantidad"
+      [isInvalid]="quantity.invalid && quantity.touched"
+    ></app-input>
+    <span *ngIf="quantity.hasError('required') && quantity.touched">La cantidad es obligatoria.</span>
+  </div>
+
+  <div class="button-section">
+    <app-button 
+      [disabled]="supplyForm.invalid"
+      ButtonLarge
+      (click)="addSupply()">
+      Guardar
+    </app-button>
+  </div>
+</form>

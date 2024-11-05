@@ -26,6 +26,7 @@ import { ArticleListComponent } from "./components/organisms/article-list/articl
 import { ArticleSortComponent } from "./components/molecules/article-sort/article-sort.component";
 import { FormUserComponent } from "./components/molecules/form-user/form-user.component.";
 import { FormLoginComponent } from "./components/molecules/form-login/form-login.component.";
+import { FormSupplyComponent } from "./components/molecules/form-supply/form-supply.component.";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { FormLoginComponent } from "./components/molecules/form-login/form-login
     FormArticleComponent,
     FormUserComponent,
     FormLoginComponent,
+    FormSupplyComponent,
     DropdownSelectComponent,
     ModalCategoryComponent,
     ModalArticleComponent,
@@ -73,6 +75,7 @@ import { FormLoginComponent } from "./components/molecules/form-login/form-login
     FormArticleComponent,
     FormUserComponent,
     FormLoginComponent,
+    FormSupplyComponent,
     DropdownSelectComponent,
     ModalCategoryComponent,
     ModalArticleComponent,

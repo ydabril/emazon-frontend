@@ -10,6 +10,8 @@ import { Brand, BrandResponse } from 'src/app/data/network/responses/brand.respo
 import { IArticleService } from 'src/app/domain/interfaces/article.interface';
 import { ArticleRequest } from 'src/app/data/network/requests/articleRequest';
 import { EM_ICON } from 'src/app/core/constants/em-icons';
+import { Article, ArticleResponse } from 'src/app/data/network/responses/article.response';
+import { SupplyRequest } from 'src/app/data/network/requests/supply.request';
 
 @Component({
   selector: 'admin-brand',
@@ -39,6 +41,7 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
     }
     this.page = 0
 
+    this.getArticles(this.paginationRequest)
     this.getCategoryList(this.paginationRequest, this.page);
     this.getBrandList(this.paginationRequest, this.page);
   }
@@ -59,17 +62,18 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
 
   saveArticle(articleRequest: ArticleRequest): void  {
     this._articleService.createArticle(articleRequest).subscribe({
-      next: (response: HttpResponse<any>) => this.showSuccessModal(response),
+      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Articulo creado correctamente"),
       error: (error: HttpErrorResponse) => this.showErrorModal(error)
     })
   }
 
-  private showSuccessModal(response: HttpResponse<any>) {
+  private showSuccessModal(response: HttpResponse<any>, message: string) {
+    this.openFormSupply = false;
     this.openForm = false;
     this.showModalMessage = true;
     this.modalIcon = EM_ICON['success'];
-    this.modalTitle = "Proceso existoso";
-    this.modalMessage = "Articulo creado correctamente";
+    this.modalTitle = "Proceso exitoso";
+    this.modalMessage = message;
   }
 
   private showErrorModal(error: HttpErrorResponse) {
@@ -92,7 +96,44 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
     this.openForm = value
   }
 
+  closeFormSupply(value: boolean): void {
+    this.openFormSupply = value
+  }
+
   closeModalMessage(): void  {
     this.showModalMessage = false;
+    this.getArticles(this.paginationRequest);
+  }
+
+  public getArticles(paginationRequest: PaginationRequest): void {
+    
+    this._articleService.getArticles(paginationRequest, this.page, this.sortBy).subscribe({
+      next: (response: HttpResponse<ArticleResponse>) => this.assignArticleList(response.body as ArticleResponse),
+      error: (error: HttpErrorResponse) => console.log(error)
+    })
+  }
+
+  private assignArticleList(articleResponse: ArticleResponse): void {
+    this.totalPages = articleResponse.totalPages;
+    this.currentPage = articleResponse.currentPage;
+    this.hasNextPage = articleResponse.hasNextPage;
+    this.hasPreviousPage = articleResponse.hasPreviousPage;
+    
+    let articleList: Array<Article> = articleResponse.list;
+    this.listDataArticle = articleList;
+    console.log(this.listDataArticle);
+  }
+
+  assignArticleId(idArticle: number) {
+    this.articleId = idArticle;
+    this.openFormSupply = true;
+  }
+
+  addSupply(supplyRequest: SupplyRequest) {
+    supplyRequest.articleId = this.articleId;
+    this._articleService.addSupply(supplyRequest).subscribe({
+      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Suministro agregado correctamente"),
+      error: (error: HttpErrorResponse) => this.showErrorModal(error)
+    })
   }
 }

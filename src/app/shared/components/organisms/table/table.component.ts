@@ -11,9 +11,14 @@ import { IColumnsCategory } from "src/app/domain/interfaces/column-category.inte
 export class TableComponent {
   @Output() paginationChange = new EventEmitter<any>();
   @Input() columns!: Array<IColumnsCategory>;
-  @Input() tableData!: Array<Category>;
+  @Input() tableData!: Array<any>;
+  @Output() idEmitted = new EventEmitter<number>();
 
   emitPaginationChange(paginationRequest: PaginationRequest): void {
     this.paginationChange.emit(paginationRequest);
+  }
+
+  emmitIdArticle(id: number) {
+    this.idEmitted.emit(id);
   }
 }

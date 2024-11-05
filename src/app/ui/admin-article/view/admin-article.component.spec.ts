@@ -11,13 +11,15 @@ import { IArticleService } from 'src/app/domain/interfaces/article.interface';
 import { IBrandService } from 'src/app/domain/interfaces/brand.interface';
 import { ICategoryService } from 'src/app/domain/interfaces/category.interface';
 import { AdminArticleViewComponent } from './admin-article.component.';
+import { ArticleResponse } from 'src/app/data/network/responses/article.response';
+import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
 
 describe('AdminArticleViewComponent', () => {
   let component: AdminArticleViewComponent;
   let fixture: ComponentFixture<AdminArticleViewComponent>;
   let mockCategoryService: jest.Mocked<ICategoryService>;
   let mockBrandService: jest.Mocked<IBrandService>;
-  let mockArticleService: jest.Mocked<IArticleService>;
+  let mockArticleService: any;
 
   beforeEach(async () => {
     mockCategoryService = {
@@ -25,12 +27,16 @@ describe('AdminArticleViewComponent', () => {
         body: { list: [{ id: 1, name: 'Category 1', description: 'descripcion' }] }
       }))),
     } as any;
+
     mockBrandService = {
       getBrands: jest.fn().mockReturnValue(of(new HttpResponse({
         body: { list: [{ id: 1, name: 'Brand 1', description: 'descripcion' }] }
       }))),
     } as any;
+
     mockArticleService = {
+      getArticles: jest.fn(),
+      addSupply: jest.fn(),
       createArticle: jest.fn(),
     } as any;
 
@@ -48,6 +54,7 @@ describe('AdminArticleViewComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminArticleViewComponent);
+    mockArticleService.getArticles.mockReturnValue(of({ body: { articles: [], pagination: {} } }));
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -96,7 +103,7 @@ describe('AdminArticleViewComponent', () => {
     expect(component.openForm).toBe(false);
     expect(component.showModalMessage).toBe(true);
     expect(component.modalIcon).toBe('/assets/icons/success-icon.svg');
-    expect(component.modalTitle).toBe("Proceso existoso");
+    expect(component.modalTitle).toBe("Proceso exitoso");
     expect(component.modalMessage).toBe("Articulo creado correctamente");
   });
 
@@ -133,5 +140,60 @@ describe('AdminArticleViewComponent', () => {
     component.showModalMessage = true;
     component.closeModalMessage();
     expect(component.showModalMessage).toBe(false);
+  });
+
+  it('should assign article ID and open supply form', () => {
+    component.assignArticleId(1);
+    expect(component.articleId).toBe(1);
+    expect(component.openFormSupply).toBe(true);
+  });
+
+  it('should add a supply and show success modal', () => {
+    const supplyRequest = { articleId: 1, quantity: 10 };
+    const response: HttpResponse<any> = new HttpResponse({ body: null });
+    mockArticleService.addSupply.mockReturnValue(of(response));
+
+    component.articleId = 1;
+    component.addSupply(supplyRequest);
+
+    expect(mockArticleService.addSupply).toHaveBeenCalledWith(supplyRequest);
+    expect(component.showModalMessage).toBe(true);
+    expect(component.modalIcon).toBe('/assets/icons/success-icon.svg');
+    expect(component.modalTitle).toBe("Proceso exitoso");
+    expect(component.modalMessage).toBe("Suministro agregado correctamente");
+  });
+
+  it('should show error modal when adding supply fails', () => {
+    const supplyRequest = { articleId: 1, quantity: 10 };
+    const errorResponse = new HttpErrorResponse({ error: { message: 'Error adding supply' } });
+    mockArticleService.addSupply.mockReturnValue(throwError(() => errorResponse));
+
+    component.addSupply(supplyRequest);
+
+    expect(component.showModalMessage).toBe(true);
+    expect(component.modalIcon).toBe('/assets/icons/error-icon.svg');
+    expect(component.modalTitle).toBe("Algo salió mal");
+    expect(component.modalMessage).toBe('Error adding supply');
+  });
+
+  it('should fetch and assign article list', () => {
+    const articleResponse: ArticleResponse = { list: [], totalElements: 10, pageSize: 10, totalPages: 5, currentPage: 1, hasNextPage: false, hasPreviousPage: false };
+    const paginationRequest: PaginationRequest = {size: 10, sortDirection: 'ASC'}
+    mockArticleService.getArticles.mockReturnValue(of(new HttpResponse({ body: articleResponse })));
+
+    component.getArticles(paginationRequest);
+
+    expect(mockArticleService.getArticles).toHaveBeenCalledWith(component.paginationRequest, component.page, component.sortBy);
+    expect(component.listDataArticle).toEqual(articleResponse.list);
+    expect(component.totalPages).toBe(5);
+    expect(component.currentPage).toBe(1);
+    expect(component.hasNextPage).toBe(false);
+    expect(component.hasPreviousPage).toBe(false);
+  });
+
+  it('should close supply form', () => {
+    component.openFormSupply = true;
+    component.closeFormSupply(false);
+    expect(component.openFormSupply).toBe(false);
   });
 });

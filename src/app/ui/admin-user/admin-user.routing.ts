@@ -7,6 +7,8 @@ import { ROLE } from 'src/app/core/constants/enums/roles.enum';
 export const userRoute: Routes = [
   { 
     path: 'admin-user', 
-    component: AdminUserViewComponent
+    component: AdminUserViewComponent,
+    canActivate: [AuthGuard], 
+    data: { role: ROLE.admin}
   }
 ]

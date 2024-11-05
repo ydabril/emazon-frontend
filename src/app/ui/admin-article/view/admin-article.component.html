@@ -17,6 +17,20 @@
       </div>
 </app-modal-article>
 
+<app-modal-article 
+    *ngIf="openFormSupply" 
+    modalTitle="Agregar suministro al articulo"
+    [showForm]="openFormSupply" 
+    (closeFormValue)="closeFormSupply($event)">
+    <div class="modal-form">
+        <div class="form-container">
+          <app-form-supply 
+            (supplyRequestEvent)="addSupply($event)">
+          </app-form-supply>
+        </div>
+      </div>
+</app-modal-article>
+
 <app-modal-message 
     *ngIf="showModalMessage" 
     [iconMessage]="modalIcon"
@@ -33,5 +47,11 @@
         <app-button ButtonIcon icon="add" (click)="openFormArticle()">Agregar Articulo</app-button>
     </div>
 
+    <app-table 
+        [columns]="articleColumns" 
+        [tableData]="listDataArticle"
+        (paginationChange)="getArticles($event)"
+        (idEmitted)="assignArticleId($event)"
+    ></app-table>
 
 </app-dashboard>

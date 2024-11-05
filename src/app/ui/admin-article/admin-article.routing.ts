@@ -9,6 +9,6 @@ export const articleRoute: Routes = [
     path: 'admin-article', 
     component: AdminArticleViewComponent, 
     canActivate: [AuthGuard], 
-    data: { role: ROLE.aux} 
+    data: { role: ROLE.admin} 
   }
 ]
