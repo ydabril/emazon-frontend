@@ -29,7 +29,7 @@
 <app-dashboard>
     <h2>Administrar <span>Articulos</span></h2>
 
-    <div class="add-brand-button">
+    <div class="add-brand-button" *ngIf="userRole === 'ROLE_ADMIN'">
         <app-button ButtonIcon icon="add" (click)="openFormArticle()">Agregar Articulo</app-button>
     </div>
 

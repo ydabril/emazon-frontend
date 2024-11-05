@@ -1,1 +1,16 @@
-<h1>login</h1>
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
+
+<div class="container">
+  <div class="login-card">
+    <h2>Inicio de sesión</h2>
+    <app-form-login (loginRequestEvent)="loginUser($event)"></app-form-login>
+    <p>¿No tienes cuenta? <span><a href="">Resgistrate</a></span></p>
+  </div>
+</div>

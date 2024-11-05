@@ -14,7 +14,7 @@ export class ArticleService implements IArticleService {
   constructor(private _http: HttpClient) { }
 
   public createArticle(articleRequest: ArticleRequest) {
-    return this._http.post<unknown>(`${environment.API_URL}/article`, articleRequest, { observe: 'response' });
+    return this._http.post<unknown>(`${environment.API_URL}/article/all`, articleRequest, { observe: 'response' });
   }
 
   public getArticles(paginationRequest: PaginationRequest, page: number, sortByValue: string): Observable<HttpResponse<ArticleResponse>> {
@@ -22,7 +22,7 @@ export class ArticleService implements IArticleService {
     const sortDirection = paginationRequest.sortDirection;
     const sortBy = sortByValue;
 
-    const url = `${environment.API_URL}/article?sortBy=${sortBy}&sortDirection=${sortDirection}&page=${page}&size=${size}`;
+    const url = `${environment.API_URL}/article/all?sortBy=${sortBy}&sortDirection=${sortDirection}&page=${page}&size=${size}`;
 
     return this._http.get<ArticleResponse>(url, { observe: 'response' });
   }

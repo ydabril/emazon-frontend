@@ -68,4 +68,53 @@ describe('UserService', () => {
 
     req.flush('Error creating user', { status: 404, statusText: 'Not Found' });
   });
+
+  it('should log in a user and return a response', () => {
+    const userRequest: UserRequest = {
+      firstName: 'Yojhan',
+      lastName: 'Abril',
+      documentNumber: '100345220511',
+      phoneNumber: '1234567890',
+      birthdate: '2000-09-01',
+      email: 'yojhanabrilperez22@gmail.com',
+      password: '123456789',
+    };
+  
+    service.loginUser(userRequest).subscribe((response) => {
+      expect(response).toBeTruthy();
+      expect(response.status).toBe(200);
+    });
+  
+    const req = httpMock.expectOne(`${environment.API_URL_USER}/auth/login`);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual(userRequest);
+  
+    req.flush({ token: 'fake-jwt-token' }, { status: 200, statusText: 'OK' });
+  });
+  
+  it('should handle error on loginUser', () => {
+    const userRequest: UserRequest = {
+      firstName: 'Yojhan',
+      lastName: 'Abril',
+      documentNumber: '100345220511',
+      phoneNumber: '1234567890',
+      birthdate: '2000-09-01',
+      email: 'yojhanabrilperez22@gmail.com',
+      password: '123456789',
+    };
+  
+    service.loginUser(userRequest).subscribe({
+      next: () => fail('should have failed with the 401 error'),
+      error: (error) => {
+        expect(error.status).toBe(401);
+        expect(error.statusText).toBe('Unauthorized');
+      },
+    });
+  
+    const req = httpMock.expectOne(`${environment.API_URL_USER}/auth/login`);
+    expect(req.request.method).toBe('POST');
+  
+    req.flush('Unauthorized', { status: 401, statusText: 'Unauthorized' });
+  });
+  
 });

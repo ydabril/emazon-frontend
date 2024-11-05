@@ -20,6 +20,7 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
   headers: string[] = ['ID', 'Nombre', 'Descripción'];
   showDragDrop: boolean = true;
   showFormArticle: boolean = true;
+  userRole: string | null = null;
 
   constructor(
     @Inject(ProviderServices.categoryService) private _categoryService: ICategoryService,
@@ -30,6 +31,8 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
   }
 
   ngOnInit(): void {
+    this.userRole = localStorage.getItem('role');
+    
     this.paginationRequest = {
       sortDirection: 'ASC',
       size: 50

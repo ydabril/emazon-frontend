@@ -43,7 +43,7 @@ describe('ArticleService', () => {
       expect(response).toBeTruthy();
     });
 
-    const req = httpMock.expectOne(`${environment.API_URL}/article`);
+    const req = httpMock.expectOne(`${environment.API_URL}/article/all`);
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(articleRequest);
     req.flush({});
@@ -86,7 +86,7 @@ describe('ArticleService', () => {
       expect(response.body).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne(`${environment.API_URL}/article?sortBy=name&sortDirection=ASC&page=1&size=10`);
+    const req = httpMock.expectOne(`${environment.API_URL}/article/all?sortBy=name&sortDirection=ASC&page=1&size=10`);
     expect(req.request.method).toBe('GET');
     req.flush(new HttpResponse({ body: mockResponse }));
   });
@@ -105,7 +105,7 @@ describe('ArticleService', () => {
       (error) => expect(error.message).toContain(errorMessage)
     );
 
-    const req = httpMock.expectOne(`${environment.API_URL}/article?sortBy=name&sortDirection=ASC&page=1&size=10`);
+    const req = httpMock.expectOne(`${environment.API_URL}/article/all?sortBy=name&sortDirection=ASC&page=1&size=10`);
     req.flush(errorMessage, { status: 500, statusText: 'Server Error' });
   });
 });

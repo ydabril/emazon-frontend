@@ -48,7 +48,6 @@ export class AdminCategoryPresenter implements AdminCategoryInputLogic {
   }
 
   public getCategories(paginationRequest: PaginationRequest, page: number): void {
-    console.log(paginationRequest);
     
     this._categoryService.getCategories(paginationRequest, page).subscribe({
       next: (response: HttpResponse<CategoryResponse>) => this.assignCategoryList(response.body as CategoryResponse),

@@ -44,8 +44,6 @@ export class AdminBrandPresenter implements AdminBrandInputLogic {
   }
 
   public getBrands(paginationRequest: PaginationRequest, page: number): void {
-    console.log(paginationRequest);
-    
     this._brandService.getBrands(paginationRequest, page).subscribe({
       next: (response: HttpResponse<BrandResponse>) => this.assignBrandList(response.body as BrandResponse),
       error: (error: HttpErrorResponse) => console.log(error)

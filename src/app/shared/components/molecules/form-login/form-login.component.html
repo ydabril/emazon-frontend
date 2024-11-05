@@ -1,0 +1,36 @@
+<form [formGroup]="loginForm">
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <app-input
+      InputDefault
+      formControlName="email"
+      placeholder="Correo electrónico"
+      [isInvalid]="email.invalid && email.touched"
+      type="email"
+    ></app-input>
+    <span *ngIf="email.hasError('required') && email.touched">El correo electrónico es obligatorio.</span>
+    <span *ngIf="email.hasError('email') && email.touched">Ingrese un correo electrónico válido.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <app-input
+      InputDefault
+      formControlName="password"
+      placeholder="Contraseña"
+      [isInvalid]="password.invalid && password.touched"
+      type="password"
+    ></app-input>
+    <span *ngIf="password.hasError('required') && password.touched">La contraseña es obligatoria.</span>
+    <span *ngIf="password.hasError('minlength') && password.touched">La contraseña debe tener al menos 8 caracteres.</span>
+  </div>
+
+  <div class="button-section">
+    <app-button 
+      [disabled]="loginForm.invalid"
+      ButtonLarge
+      (click)="loginUser()">
+      Guardar
+    </app-button>
+  </div>
+</form>

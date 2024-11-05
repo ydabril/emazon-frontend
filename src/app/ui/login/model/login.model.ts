@@ -1,9 +1,8 @@
 import { PaginationRequest } from "src/app/data/network/requests/pagination.request";
-import { Article } from "src/app/data/network/responses/article.response";
 import { Brand } from "src/app/data/network/responses/brand.response";
 import { Category } from "src/app/data/network/responses/category.response";
 
-export abstract class LandingArticleOutputLogic {
+export abstract class LoginOutputLogic {
     isNavMenuExpanded: boolean = false;
     openForm: boolean = false;
     showModalMessage!: boolean;
@@ -16,11 +15,7 @@ export abstract class LandingArticleOutputLogic {
     hasPreviousPage!: boolean;
     page: number = 0;
     paginationRequest!: PaginationRequest;
-    listDataArticle!: Array<Article>;
+    listDataCategory!: Array<Category>;
     listDataBrand!: Array<Brand>;
-    sortBy: string = 'ARTICLE_NAME';
-    showErrorModal!: boolean;
-    errorCode!: number | null;
-    existToken: boolean = false;
-    userName!: string | null;
+    success: boolean = false;
 }

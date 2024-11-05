@@ -13,7 +13,7 @@ export class BrandService implements IBrandService {
     constructor(private _http: HttpClient) { }
 
     public createBrand(brandRequest: BrandRequest) {
-        return this._http.post<any>(`${environment.API_URL}/brand`, brandRequest, { observe: 'response' });
+        return this._http.post<unknown>(`${environment.API_URL}/brand`, brandRequest, { observe: 'response' });
     }
 
     public getBrands(paginationRequest: PaginationRequest, page: number): Observable<HttpResponse<BrandResponse>> {

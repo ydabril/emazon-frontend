@@ -7,6 +7,7 @@ import { PaginationRequest } from 'src/app/data/network/requests/pagination.requ
 import { Article, ArticleResponse } from 'src/app/data/network/responses/article.response';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ArticleSortBy } from 'src/app/core/constants/enums/article-sortby.enum';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'landing-page',
@@ -18,18 +19,39 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
   userIcon: string = EM_ICON['user'];
 
   constructor(
+    private route: ActivatedRoute,
     @Inject(ProviderServices.articleService) private _articleService: IArticleService
   ) {
     super();
   }
 
   ngOnInit(): void {
+    this.validateExistToken();
+    this.route.queryParams.subscribe(params => {
+      this.showErrorModal = params['showErrorModal'];
+      this.errorCode = params['errorCode'] ? +params['errorCode'] : null;
+
+      if (this.showErrorModal) {
+        this.ErrorModal();
+      }
+    });
+    
     this.paginationRequest = {
       size: 10,
       sortDirection: 'ASC'
     }
 
     this.getArticles(this.paginationRequest)
+  }
+
+  validateExistToken() {
+    const token = localStorage.getItem('token');
+    if(token) {
+      this.existToken = true;
+      this.userName = localStorage.getItem('userName');
+    } else {
+      this.existToken = false;
+    }
   }
 
   public getArticles(paginationRequest: PaginationRequest): void {
@@ -60,5 +82,17 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
   nextPage(pageValue: number) {
     this.page = pageValue;
     this.getArticles(this.paginationRequest); 
+  }
+
+  closeModalMessage(): void  {
+    this.showModalMessage = false;
+  }
+
+  ErrorModal() {
+    this.openForm = false;
+    this.showModalMessage = true;
+    this.modalIcon = EM_ICON['error'];
+    this.modalTitle = "Algo salió mal";
+    this.modalMessage = "Acceso denegano"
   }
 }

@@ -1,18 +1,18 @@
 <div class="nav-menu" [ngClass]="{'nav-menu-expand': navMenuExpamded}">
   <ul>
-    <li routerLinkActive="link-active">
+    <li *ngIf="userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
       <img [src]="configIcon">
-      <a [routerLink]="['/admin-category']">Administrar Categorias</a>
+      <a [routerLink]="['/admin-category']">Administrar Categorías</a>
     </li>
-    <li routerLinkActive="link-active">
+    <li *ngIf="userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
       <img [src]="configIcon">
       <a [routerLink]="['/admin-brand']">Administrar Marcas</a>
     </li>
-    <li routerLinkActive="link-active">
+    <li *ngIf="userRole === 'ROLE_AUX_BODEGA'" routerLinkActive="link-active">
       <img [src]="configIcon">
-      <a [routerLink]="['/admin-article']">Administrar Articulos</a>
+      <a [routerLink]="['/admin-article']">Administrar Artículos</a>
     </li>
-    <li routerLinkActive="link-active">
+    <li *ngIf="userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
       <img [src]="configIcon">
       <a [routerLink]="['/admin-article']">Administrar Usuarios</a>
     </li>

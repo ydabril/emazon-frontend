@@ -1,3 +1,12 @@
+<app-modal-message 
+    *ngIf="showModalMessage" 
+    [iconMessage]="modalIcon"
+    [titleMessage]="modalTitle"
+    [textMessage]="modalMessage"
+    (closeModalValue)="closeModalMessage()"
+    >
+</app-modal-message>
+
 <div class="header">
   <div class="header-logo">
     <div class="header-menu">
@@ -11,7 +20,8 @@
     </div>
     <div class="header-option--user">
       <img [src]="userIcon" alt="">
-      <p>Log in</p>
+      <p *ngIf="!existToken"><a [routerLink]="['/login']">Log in</a></p>
+      <p *ngIf="existToken">{{ userName }}</p>
     </div>
   </div>
 </div>
