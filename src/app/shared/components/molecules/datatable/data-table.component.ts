@@ -11,10 +11,13 @@ export class DataTableComponent<T extends Record<string, any>> implements OnInit
   @Input() rows?: Array<T>;
   @Output() idEmitted = new EventEmitter<number>();
   addIcon: string = BUTTON_ICON['add'];
+  role!: string;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.role = localStorage.getItem('role') as string
+  }
 
   emitId(id: any): void {
     const numericId = Number(id);

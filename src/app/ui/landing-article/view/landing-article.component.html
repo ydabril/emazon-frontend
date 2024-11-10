@@ -1,10 +1,5 @@
-<app-modal-message 
-    *ngIf="showModalMessage" 
-    [iconMessage]="modalIcon"
-    [titleMessage]="modalTitle"
-    [textMessage]="modalMessage"
-    (closeModalValue)="closeModalMessage()"
-    >
+<app-modal-message *ngIf="showModalMessage" [iconMessage]="modalIcon" [titleMessage]="modalTitle"
+  [textMessage]="modalMessage" (closeModalValue)="closeModalMessage()">
 </app-modal-message>
 
 <div class="header">
@@ -21,7 +16,17 @@
     <div class="header-option--user">
       <img [src]="userIcon" alt="">
       <p *ngIf="!existToken"><a [routerLink]="['/login']">Log in</a></p>
-      <p *ngIf="existToken">{{ userName }}</p>
+      <p *ngIf="existToken" (click)="changeHeaderMenu()">
+        {{ userName }}
+        <img class="arrow-icon" [src]="arrowIcon" alt="">
+      </p>
+    </div>
+
+    <div class="header-menu_options" *ngIf="showHeaderMenu">
+      <ul>
+        <li *ngIf="(role == 'ROLE_ADMIN' || role == 'ROLE_AUX_BODEGA')"><a [routerLink]="role === 'ROLE_ADMIN' ? '/admin-category' : '/admin-article'">Dashboard</a></li>
+        <li (click)="logout()" class="header-menu--logout">Cerrar sesión</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -62,17 +67,10 @@
     </div>
   </div>
 
-  <article-list 
-    (paginationChange)="getArticles($event)"
-    (sortChange)="sortByChange($event)"
+  <article-list (paginationChange)="getArticles($event)" (sortChange)="sortByChange($event)"
     [articleList]="listDataArticle">
   </article-list>
 
-  <app-pagination 
-    [totalPages]="totalPages"
-    [currentPage]="currentPage"
-    [showArrowLeft]="hasPreviousPage"
-    [showArrowRight]="hasNextPage"
-    (pageNumberChange)="nextPage($event)"
-  ></app-pagination>
+  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" [showArrowLeft]="hasPreviousPage"
+    [showArrowRight]="hasNextPage" (pageNumberChange)="nextPage($event)"></app-pagination>
 </div>

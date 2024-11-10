@@ -1,0 +1,41 @@
+@use "/src/assets/colors/colors.scss" as *;
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: $color-bg-light-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-card {
+    background-color: $color-white;
+    margin-top: 150px;
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+    padding: 15px;
+    box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-family: 'Poppins';
+      font-weight: 600;
+      font-size: 24px;
+      text-align: center;
+      color: $color-purple;
+    }
+
+    p {
+      margin-top: 20px;
+      font-family: 'Poppins';
+      font-weight: 500;
+      font-size: 14px;
+
+      span {
+        a {
+          color: $color-purple;
+        }
+      }
+    }
+  }
+}

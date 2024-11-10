@@ -8,6 +8,7 @@ import { Article, ArticleResponse } from 'src/app/data/network/responses/article
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ArticleSortBy } from 'src/app/core/constants/enums/article-sortby.enum';
 import { ActivatedRoute } from '@angular/router';
+import { UtilsService } from 'src/app/common/utils/utils.service';
 
 @Component({
   selector: 'landing-page',
@@ -17,9 +18,11 @@ import { ActivatedRoute } from '@angular/router';
 export class LandingArticleViewComponent extends LandingArticleOutputLogic implements OnInit {
   cartIcon: string = EM_ICON['cart'];
   userIcon: string = EM_ICON['user'];
+  arrowIcon: string = EM_ICON['arrowDropdown']
 
   constructor(
     private route: ActivatedRoute,
+    private _utils: UtilsService,
     @Inject(ProviderServices.articleService) private _articleService: IArticleService
   ) {
     super();
@@ -49,6 +52,7 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
     if(token) {
       this.existToken = true;
       this.userName = localStorage.getItem('userName');
+      this.role = localStorage.getItem('role');
     } else {
       this.existToken = false;
     }
@@ -94,5 +98,15 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
     this.modalIcon = EM_ICON['error'];
     this.modalTitle = "Algo salió mal";
     this.modalMessage = "Acceso denegano"
+  }
+
+  changeHeaderMenu() {
+    this.showHeaderMenu = !this.showHeaderMenu
+  }
+
+  logout() {
+    this._utils.logout();
+    this.showHeaderMenu = false;
+    this.validateExistToken();
   }
 }

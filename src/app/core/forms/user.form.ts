@@ -13,6 +13,14 @@ export const userForm = {
   documentNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
   phoneNumber: ['', [Validators.maxLength(13), Validators.pattern('^\\+?[0-9]*$')]],
   birthdate: ['', [Validators.required, ageValidator]],
-  email: ['', [Validators.required, Validators.email]],
+  email: [
+    '',
+    [
+      Validators.required,
+      Validators.pattern(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+      )
+    ]
+  ],
   password: ['', [Validators.required, Validators.minLength(8)]],
 };

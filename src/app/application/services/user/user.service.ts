@@ -15,4 +15,8 @@ export class UserService implements IUserService {
   public loginUser(userRequest: UserRequest) {
     return this._http.post<unknown>(`${environment.API_URL_USER}/auth/login`, userRequest, { observe: 'response' });
   }
+
+  public registerUser(userRequest: UserRequest) {
+    return this._http.post<unknown>(`${environment.API_URL_USER}/user/register-client`, userRequest, { observe: 'response' });
+  }
 }

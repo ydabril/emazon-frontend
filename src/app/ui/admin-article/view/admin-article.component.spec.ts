@@ -10,7 +10,7 @@ import { CategoryServiceProvider } from 'src/app/data/providers/category/categor
 import { IArticleService } from 'src/app/domain/interfaces/article.interface';
 import { IBrandService } from 'src/app/domain/interfaces/brand.interface';
 import { ICategoryService } from 'src/app/domain/interfaces/category.interface';
-import { AdminArticleViewComponent } from './admin-article.component.';
+import { AdminArticleViewComponent } from './admin-article.component';
 import { ArticleResponse } from 'src/app/data/network/responses/article.response';
 import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
 

@@ -2,8 +2,10 @@
 	<thead>
 	  <tr>
 		<th *ngFor="let column of columns">
-		  {{ column.header }}
-		</th>
+			<ng-container *ngIf="column.header !== 'accion' || role === 'ROLE_AUX_BODEGA'">
+			  {{ column.header }}
+			</ng-container>
+		  </th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -11,7 +13,7 @@
 		<td *ngFor="let column of columns">
 		  {{ row[column.field] }}
 		  <button
-			*ngIf="column.field == 'action' && columns && columns[0]?.field"
+			*ngIf="column.field == 'action' && columns && columns[0]?.field  && role == 'ROLE_AUX_BODEGA'"
 			class="add-button"
 			(click)="emitId(row[columns[0].field])"
 		  >

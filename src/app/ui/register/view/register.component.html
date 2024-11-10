@@ -9,8 +9,11 @@
 
 <div class="container">
   <div class="login-card">
-    <h2>Inicio de sesión</h2>
-    <app-form-login (loginRequestEvent)="loginUser($event)"></app-form-login>
-    <p>¿No tienes cuenta? <span><a [routerLink]="['/register']">Resgistrate</a></span></p>
+    <h2>Registro</h2>
+    <div class="form-container">
+      <app-form-user 
+      (userRequestEvent)="saveUser($event)">
+      </app-form-user>
+    </div>
   </div>
 </div>

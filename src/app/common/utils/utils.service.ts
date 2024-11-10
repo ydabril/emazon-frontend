@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import * as jwt_decode from "jwt-decode";
 
 @Injectable({ providedIn: 'root' })
 export class UtilsService {
+  private logoutSubject = new Subject<void>();
   public _requestOnAction = new BehaviorSubject<boolean>(false);
   constructor(private router: Router) {}
 
@@ -27,6 +28,8 @@ export class UtilsService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    this.router.navigate(['/landing']);
+    localStorage.removeItem('userName');
+    this.router.navigate(['/']);
+    this.logoutSubject.next();
   }
 }

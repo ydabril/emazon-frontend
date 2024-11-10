@@ -26,20 +26,18 @@
 
   .em-select__arrow {
     position: absolute;
-    right: 10px; // Ajusta según el espacio necesario
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; // Asegura que el icono no interfiera con la interacción del select
+    pointer-events: none;
     width: 12px;
     height: 12px;
   }
 }
 
-/* Asegura que el ancho de las opciones sea el mismo que el select */
 .em-select select {
-  -webkit-appearance: none; // Oculta el estilo nativo en navegadores webkit
-  -moz-appearance: none; // Oculta el estilo nativo en navegadores Mozilla
-  appearance: none;
-  width: 100%; // Hace que el ancho del desplegable sea el mismo que el del select
-  box-sizing: border-box; // Asegura que el padding no afecte el ancho total
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  box-sizing: border-box;
 }

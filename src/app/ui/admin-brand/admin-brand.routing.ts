@@ -9,6 +9,6 @@ export const brandRoute: Routes = [
     path: 'admin-brand', 
     component: adminBrandViewComponent, 
     canActivate: [AuthGuard], 
-    data: { role: ROLE.admin} 
+    data: { roles: [ROLE.admin] } 
   }
 ]

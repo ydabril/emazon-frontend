@@ -8,6 +8,6 @@ export const categoryRoute: Routes = [
     path: 'admin-category', 
     component: AdminCategoryViewComponent, 
     canActivate: [AuthGuard] , 
-    data: { role: ROLE.admin} 
+    data: { roles: [ROLE.admin] } 
   }
 ]

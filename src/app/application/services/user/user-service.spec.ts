@@ -45,7 +45,7 @@ describe('UserService', () => {
     req.flush(null, { status: 200, statusText: 'OK' });
   });
 
-  it('should handle error response', () => {
+  it('should handle error response when creating an auxiliary user', () => {
     const userRequest: UserRequest = {
       firstName: 'Yojhan',
       lastName: 'Abril',
@@ -116,5 +116,53 @@ describe('UserService', () => {
   
     req.flush('Unauthorized', { status: 401, statusText: 'Unauthorized' });
   });
-  
+
+  // Agregar los tests para el nuevo método registerUser
+  it('should register a user and return a response', () => {
+    const userRequest: UserRequest = {
+      firstName: 'Yojhan',
+      lastName: 'Abril',
+      documentNumber: '100345220511',
+      phoneNumber: '1234567890',
+      birthdate: '2000-09-01',
+      email: 'yojhanabrilperez22@gmail.com',
+      password: '123456789',
+    };
+
+    service.registerUser(userRequest).subscribe((response) => {
+      expect(response).toBeTruthy();
+      expect(response.status).toBe(200);
+    });
+
+    const req = httpMock.expectOne(`${environment.API_URL_USER}/user/register-client`);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual(userRequest);
+
+    req.flush(null, { status: 200, statusText: 'OK' });
+  });
+
+  it('should handle error response when registering user', () => {
+    const userRequest: UserRequest = {
+      firstName: 'Yojhan',
+      lastName: 'Abril',
+      documentNumber: '100345220511',
+      phoneNumber: '1234567890',
+      birthdate: '2000-09-01',
+      email: 'yojhanabrilperez22@gmail.com',
+      password: '123456789',
+    };
+
+    service.registerUser(userRequest).subscribe({
+      next: () => fail('should have failed with the 400 error'),
+      error: (error) => {
+        expect(error.status).toBe(400);
+      },
+    });
+
+    const req = httpMock.expectOne(`${environment.API_URL_USER}/user/register-client`);
+    expect(req.request.method).toBe('POST');
+
+    req.flush('Error registering user', { status: 400, statusText: 'Bad Request' });
+  });
+
 });
