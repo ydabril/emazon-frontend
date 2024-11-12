@@ -3,15 +3,33 @@
 .cart_list {
     right: 10px;
     position: absolute;
-    width: 250px;
+    width: 320px;
     height: auto;
     min-height: 250px;
-    max-height: 300px;
+    max-height: 400px;
     background-color: #fff;
     top: 70px;
     box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.1);
     padding: 10px;
     overflow-y: auto;
+
+    .filter-section {
+      margin: 10px 5px;
+      width: 100%;
+
+      &-select {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &_option {
+        width: 45%;
+
+        span {
+          font-size: 12px;
+        }
+      }
+    }
 
     li {
       display: flex;

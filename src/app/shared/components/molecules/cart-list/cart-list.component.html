@@ -1,5 +1,29 @@
 <div class="cart_list">
   <h3>Articulos en el carrito</h3>
+  <div class="pagination-section">
+    <pagination-bar (paginationChange)="getArticles($event)"></pagination-bar>
+  </div>
+  <div class="filter-section">
+    <span>filtrar por: </span>
+    <div class="filter-section-select">
+      <div class="filter-section_option">
+        <span>Marca</span>
+        <dropdown-select
+          [options]="listDataBrand"
+          placeholder="Selecciona una marca"
+          (selectionChange)="assignBrand($event)"
+        ></dropdown-select>
+      </div>
+      <div class="filter-section_option">
+        <span>Categoria</span>
+        <dropdown-select
+          [options]="listDataCategory"
+          placeholder="Selecciona una categoria"
+          (selectionChange)="assignCategory($event)"
+        ></dropdown-select>
+      </div>
+    </div>
+  </div>
   <ul>
     <li *ngFor="let articleCart of articleCartList">
       <div class="cart-data">
@@ -14,4 +38,6 @@
       </div>
     </li>
   </ul>
+  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" [showArrowLeft]="hasPreviousPage"
+  [showArrowRight]="hasNextPage" (pageNumberChange)="nextPage($event)"></app-pagination>
 </div>

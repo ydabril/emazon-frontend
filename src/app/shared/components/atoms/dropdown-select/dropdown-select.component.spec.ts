@@ -46,6 +46,29 @@ describe('DropdownSelectComponent', () => {
     expect(onChangeSpy).toHaveBeenCalledWith('2');
   });
 
+  it('should emit selectionChange on select change', () => {
+    const mockOptions = [
+      { id: 1, name: 'Option 1' },
+      { id: 2, name: 'Option 2' },
+      { id: 3, name: 'Option 3' }
+    ];
+    
+    component.options = mockOptions;
+    fixture.detectChanges();
+  
+    const selectionChangeSpy = jest.fn();
+    component.selectionChange.subscribe(selectionChangeSpy);
+  
+    const event = {
+      target: { value: '2' }
+    } as unknown as Event;
+  
+    component.onSelectChange(event);
+  
+    expect(selectionChangeSpy).toHaveBeenCalledWith('Option 2');
+  });
+  
+
   it('should call onTouched on blur', () => {
     const onTouchedSpy = jest.fn();
     component.registerOnTouched(onTouchedSpy);
@@ -60,5 +83,41 @@ describe('DropdownSelectComponent', () => {
     component.placeholder = 'New placeholder';
     component.ngOnChanges({});
     expect(consoleSpy).toHaveBeenCalledWith('New placeholder');
+  });
+
+  it('should not emit selectionChange if no matching option is found', () => {
+    const selectionChangeSpy = jest.fn();
+    component.selectionChange.subscribe(selectionChangeSpy);
+
+    const event = {
+      target: { value: '999' } // Un valor que no esté en las opciones
+    } as unknown as Event;
+
+    component.onSelectChange(event);
+
+    expect(selectionChangeSpy).not.toHaveBeenCalled();
+  });
+
+  it('should correctly handle selection of an option', () => {
+    const mockOptions = [
+      { id: 1, name: 'Option 1' },
+      { id: 2, name: 'Option 2' },
+      { id: 3, name: 'Option 3' }
+    ];
+
+    component.options = mockOptions;
+    fixture.detectChanges();
+
+    const event = {
+      target: { value: '2' }
+    } as unknown as Event;
+
+    const selectionChangeSpy = jest.fn();
+    component.selectionChange.subscribe(selectionChangeSpy);
+
+    component.onSelectChange(event);
+
+    expect(component.value).toBe('2');
+    expect(selectionChangeSpy).toHaveBeenCalledWith('Option 2');
   });
 });

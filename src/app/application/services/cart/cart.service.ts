@@ -15,14 +15,32 @@ export class CartService implements ICartService {
     return this._http.post<unknown>(`${environment.API_URL_CART}/cart/add-article`, cartRequest, { observe: 'response' });
   }
 
-  public getArticlesCart(paginationRequest: PaginationRequest, page: number): Observable<HttpResponse<ArticleCartResponse>> {
+  public getArticlesCart(
+    paginationRequest: PaginationRequest,
+    page: number,
+    categoryValue: string | null,
+    brandValue: string | null
+  ): Observable<HttpResponse<ArticleCartResponse>> {
     const size = paginationRequest.size;
     const sortDirection = paginationRequest.sortDirection;
 
-    const url = `${environment.API_URL_CART}/cart/list-articles?&page=${page}&size=${size}&sortDirection=${sortDirection}`;
+    const params = new URLSearchParams();
+    params.append('page', page.toString());
+    params.append('size', size.toString());
+    params.append('sortDirection', sortDirection);
+
+    if (categoryValue) {
+      params.append('categoryName', categoryValue);
+    }
+    if (brandValue) {
+      params.append('brandName', brandValue);
+    }
+
+    const url = `${environment.API_URL_CART}/cart/list-articles?${params.toString()}`;
 
     return this._http.get<ArticleCartResponse>(url, { observe: 'response' });
   }
+
 
   public deleteArticleCart(id: number) {
     const url = `${environment.API_URL_CART}/cart/delete-article/${id}`;

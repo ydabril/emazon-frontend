@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EM_ICON } from 'src/app/core/constants/em-icons';
 
@@ -23,10 +23,12 @@ export class DropdownSelectComponent implements ControlValueAccessor, OnChanges 
   @Input() options: SelectOption[] = [];
   @Input() placeholder: string = 'Select an option';
   @Input() isInvalid!: boolean;
+  @Output() selectionChange = new EventEmitter<string>();
+
   arrowDropdown: string = EM_ICON['arrowDropdown']
 
-  private onChange!: (value: any) => void;
-  private onTouched!: () => void;
+  private onChange: (value: any) => void = () => {};
+  private onTouched: () => void = () => {};
   value: any;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -50,6 +52,11 @@ export class DropdownSelectComponent implements ControlValueAccessor, OnChanges 
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.value = selectedValue;
     this.onChange(this.value);
+
+    const selectedOption = this.options.find(option => option.id === +selectedValue);
+    if (selectedOption) {
+      this.selectionChange.emit(selectedOption.name);
+    }
   }
 
   onBlur(): void {

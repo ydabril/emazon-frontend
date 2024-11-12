@@ -6,6 +6,6 @@ import { ArticleCartResponse } from "src/app/data/network/responses/article-cart
 
 export interface ICartService {
     addArticle(categoryRequest: CartRequest): Observable<any>
-    getArticlesCart(paginationRequest: PaginationRequest, page: number): Observable<HttpResponse<ArticleCartResponse>>
+    getArticlesCart(paginationRequest: PaginationRequest, page: number, categortValue: string  | null, brandValue: string | null): Observable<HttpResponse<ArticleCartResponse>>
     deleteArticleCart(id: number): Observable<any>
 }
