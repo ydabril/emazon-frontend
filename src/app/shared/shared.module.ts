@@ -27,7 +27,8 @@ import { ArticleSortComponent } from "./components/molecules/article-sort/articl
 import { FormUserComponent } from "./components/molecules/form-user/form-user.component.";
 import { FormLoginComponent } from "./components/molecules/form-login/form-login.component.";
 import { FormSupplyComponent } from "./components/molecules/form-supply/form-supply.component.";
-import { HeaderPageComponent } from "./components/molecules/header-page/header-page.component";
+import { HeaderPageComponent } from "./components/organisms/header-page/header-page.component";
+import { CartListComponent } from "./components/molecules/cart-list/cart-list.component";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HeaderPageComponent } from "./components/molecules/header-page/header-p
     TextareaComponent,
     AppButtonComponent,
     NavbarComponent,
+    CartListComponent,
     HeaderComponent,
     HeaderPageComponent,
     DasboardComponent,
@@ -70,6 +72,7 @@ import { HeaderPageComponent } from "./components/molecules/header-page/header-p
     TextareaComponent,
     AppButtonComponent,
     NavbarComponent,
+    CartListComponent,
     HeaderComponent,
     HeaderPageComponent,
     DasboardComponent,

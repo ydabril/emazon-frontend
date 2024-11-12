@@ -6,7 +6,7 @@
         <h1 class="header-logo--text">EMAZON</h1>
     </div>
     <div class="header-option">
-        <div class="header-option--cart">
+        <div class="header-option--cart" (click)="showCart()">
             <img [src]="cartIcon" alt="">
         </div>
         <div class="header-option--user">
@@ -26,6 +26,6 @@
             </ul>
         </div>
 
-     <ng-content></ng-content>
+     <cart-list *ngIf="showCartValue"></cart-list>
     </div>
 </div>

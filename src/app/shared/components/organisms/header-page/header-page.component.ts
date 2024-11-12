@@ -16,6 +16,7 @@ export class HeaderPageComponent implements OnInit {
   role!: string | null;
   showHeaderMenu: boolean = false;
   isNavMenuExpanded: boolean = false;
+  showCartValue: boolean = false;
   userIcon: string = EM_ICON['user'];
   cartIcon: string = EM_ICON['cart']
   arrowIcon: string = EM_ICON['arrowDropdown']
@@ -32,6 +33,10 @@ export class HeaderPageComponent implements OnInit {
   toggleNavMenu() {
     this.isNavMenuExpanded = !this.isNavMenuExpanded;
     this.toggleMenuValue.emit(this.isNavMenuExpanded);
+  }
+
+  showCart() {
+    this.showCartValue = !this.showCartValue
   }
 
   changeHeaderMenu() {

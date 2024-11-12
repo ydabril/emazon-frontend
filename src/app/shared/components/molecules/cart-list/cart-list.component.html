@@ -1,0 +1,17 @@
+<div class="cart_list">
+  <h3>Articulos en el carrito</h3>
+  <ul>
+    <li *ngFor="let articleCart of articleCartList">
+      <div class="cart-data">
+        <img src="/assets/images/article-placeholder2.jpeg" alt="">
+        <div class="cart-data_text">
+          <p>{{ articleCart.name }}</p>
+          <p>${{ articleCart.price }} x <span>{{ articleCart.quantity }}</span></p>
+        </div>
+      </div>
+      <div class="delete-cart" (click)="deleteArticleCart(articleCart.cartId)">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </div>
+    </li>
+  </ul>
+</div>
