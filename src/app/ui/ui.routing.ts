@@ -10,7 +10,8 @@ export const UIRouting: Routes = [
       { path: '', loadChildren: () => import('./admin-user/admin-user.module').then(m => m.AdminUserModule) },
       { path: '', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
       { path: '', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
-      { path: '', loadChildren: () => import('./landing-article/landing-article.module').then(m => m.LandingArticleModule) }
+      { path: '', loadChildren: () => import('./landing-article/landing-article.module').then(m => m.LandingArticleModule) },
+      { path: '', loadChildren: () => import('./article-details/article-details.module').then(m => m.ArticleDetailsModule) }
     ]
   }
 ]

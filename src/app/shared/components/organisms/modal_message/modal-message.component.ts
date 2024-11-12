@@ -11,6 +11,7 @@ export class ModalMessageComponent implements OnInit {
   @Input() iconMessage!: string;
   @Input() titleMessage!: string;
   @Input() textMessage!: string;
+  @Input() estimatedRestockDate!: string;
 
   icon!: string;
   title!: string;

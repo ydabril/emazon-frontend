@@ -3,7 +3,7 @@ import { Article } from "src/app/data/network/responses/article.response";
 import { Brand } from "src/app/data/network/responses/brand.response";
 import { Category } from "src/app/data/network/responses/category.response";
 
-export abstract class LandingArticleOutputLogic {
+export abstract class ArticleDetailsOutputLogic {
     isNavMenuExpanded: boolean = false;
     openForm: boolean = false;
     showModalMessage!: boolean;
@@ -26,4 +26,8 @@ export abstract class LandingArticleOutputLogic {
     showHeaderMenu: boolean = false;
     role!: string | null; 
     articleQuantity: number = 1;
+    articleData!: Article;
+    quantity: number = 1;
+    articleId!: number;
+    estimatedRestockDate!: string;
 }

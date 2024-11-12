@@ -2,34 +2,22 @@
   [textMessage]="modalMessage" (closeModalValue)="closeModalMessage()">
 </app-modal-message>
 
-<div class="header">
-  <div class="header-logo">
-    <div class="header-menu">
-      <img src="/assets/icons/menu-bars.svg" alt="">
-    </div>
-    <h1 class="header-logo--text">EMAZON</h1>
+<header>
+  <div class="header-cart_list">
+    <h3>Articulos en el carrito</h3>
+    <ul>
+      <li>
+        <div class="cart-data">
+          <img src="/assets/images/article-placeholder2.jpeg" alt="">
+          <div class="cart-data_text">
+            <p>Article Name</p>
+            <p>$1000  x  <span>1</span></p>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
-  <div class="header-option">
-    <div class="header-option--cart">
-      <img [src]="cartIcon" alt="">
-    </div>
-    <div class="header-option--user">
-      <img [src]="userIcon" alt="">
-      <p *ngIf="!existToken"><a [routerLink]="['/login']">Log in</a></p>
-      <p *ngIf="existToken" (click)="changeHeaderMenu()">
-        {{ userName }}
-        <img class="arrow-icon" [src]="arrowIcon" alt="">
-      </p>
-    </div>
-
-    <div class="header-menu_options" *ngIf="showHeaderMenu">
-      <ul>
-        <li *ngIf="(role == 'ROLE_ADMIN' || role == 'ROLE_AUX_BODEGA')"><a [routerLink]="role === 'ROLE_ADMIN' ? '/admin-category' : '/admin-article'">Dashboard</a></li>
-        <li (click)="logout()" class="header-menu--logout">Cerrar sesión</li>
-      </ul>
-    </div>
-  </div>
-</div>
+</header>
 
 <div class="container">
   <div class="main-section">
@@ -67,7 +55,10 @@
     </div>
   </div>
 
-  <article-list (paginationChange)="getArticles($event)" (sortChange)="sortByChange($event)"
+  <article-list 
+    (paginationChange)="getArticles($event)" 
+    (sortChange)="sortByChange($event)"
+    (articleCartId)="addArticleCart($event)"
     [articleList]="listDataArticle">
   </article-list>
 

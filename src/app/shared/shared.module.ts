@@ -27,6 +27,7 @@ import { ArticleSortComponent } from "./components/molecules/article-sort/articl
 import { FormUserComponent } from "./components/molecules/form-user/form-user.component.";
 import { FormLoginComponent } from "./components/molecules/form-login/form-login.component.";
 import { FormSupplyComponent } from "./components/molecules/form-supply/form-supply.component.";
+import { HeaderPageComponent } from "./components/molecules/header-page/header-page.component";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FormSupplyComponent } from "./components/molecules/form-supply/form-sup
     AppButtonComponent,
     NavbarComponent,
     HeaderComponent,
+    HeaderPageComponent,
     DasboardComponent,
     FormComponent,
     DragDropComponent,
@@ -69,6 +71,7 @@ import { FormSupplyComponent } from "./components/molecules/form-supply/form-sup
     AppButtonComponent,
     NavbarComponent,
     HeaderComponent,
+    HeaderPageComponent,
     DasboardComponent,
     FormComponent,
     DragDropComponent,

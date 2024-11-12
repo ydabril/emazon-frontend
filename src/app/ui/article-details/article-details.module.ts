@@ -4,16 +4,16 @@ import { RouterModule } from '@angular/router';
 import { DirectiveModule } from 'src/app/core/directives/directive.module';
 import { ArticleServiceProvider } from 'src/app/data/providers/article/article.service.provider';
 import { BrandServiceProvider } from 'src/app/data/providers/brand/brand.service.provider';
+import { CartServiceProvider } from 'src/app/data/providers/cart/cart.service.provider';
 import { CategoryServiceProvider } from 'src/app/data/providers/category/category.service.provider';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { landingArticleRoute } from './landing-article.routing';
-import { LandingArticleViewComponent } from './view/landing-article.component';
-import { CartServiceProvider } from 'src/app/data/providers/cart/cart.service.provider';
+import { ArticleDetailsViewComponent } from './view/article-details.component';
+import { articleDetailsRoute } from './article-details.routing';
 
 @NgModule({
-  declarations: [LandingArticleViewComponent],
+  declarations: [ArticleDetailsViewComponent],
   imports: [
-    RouterModule.forChild(landingArticleRoute),
+    RouterModule.forChild(articleDetailsRoute),
     SharedModule,
     CommonModule,
     DirectiveModule
@@ -25,4 +25,4 @@ import { CartServiceProvider } from 'src/app/data/providers/cart/cart.service.pr
     CartServiceProvider
   ],
 })
-export class LandingArticleModule {}
+export class ArticleDetailsModule {}

@@ -5,7 +5,7 @@ import { ArticleRequest } from "src/app/data/network/requests/articleRequest";
 import { PaginationRequest } from "src/app/data/network/requests/pagination.request";
 import { PaginationArticleRequest } from "src/app/data/network/requests/pargination-article.request";
 import { SupplyRequest } from "src/app/data/network/requests/supply.request";
-import { ArticleResponse } from "src/app/data/network/responses/article.response";
+import { Article, ArticleResponse } from "src/app/data/network/responses/article.response";
 import { IArticleService } from "src/app/domain/interfaces/article.interface";
 import { environment } from "src/environments/environment";
 
@@ -26,6 +26,13 @@ export class ArticleService implements IArticleService {
     const url = `${environment.API_URL}/article/all?sortBy=${sortBy}&sortDirection=${sortDirection}&page=${page}&size=${size}`;
 
     return this._http.get<ArticleResponse>(url, { observe: 'response' });
+  }
+
+  public getArticleByid(articleId: number): Observable<HttpResponse<Article>> {
+
+    const url = `${environment.API_URL}/article/${articleId}`;
+
+    return this._http.get<Article>(url, { observe: 'response' });
   }
 
   public addSupply(supplyRequest: SupplyRequest) {

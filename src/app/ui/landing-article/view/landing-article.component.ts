@@ -9,6 +9,8 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ArticleSortBy } from 'src/app/core/constants/enums/article-sortby.enum';
 import { ActivatedRoute } from '@angular/router';
 import { UtilsService } from 'src/app/common/utils/utils.service';
+import { ICartService } from 'src/app/domain/interfaces/cart.interface';
+import { CartRequest } from 'src/app/data/network/requests/cart.request';
 
 @Component({
   selector: 'landing-page',
@@ -23,7 +25,8 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
   constructor(
     private route: ActivatedRoute,
     private _utils: UtilsService,
-    @Inject(ProviderServices.articleService) private _articleService: IArticleService
+    @Inject(ProviderServices.articleService) private _articleService: IArticleService,
+    @Inject(ProviderServices.cartService) private _cartService: ICartService
   ) {
     super();
   }
@@ -64,6 +67,33 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
       next: (response: HttpResponse<ArticleResponse>) => this.assignArticleList(response.body as ArticleResponse),
       error: (error: HttpErrorResponse) => console.log(error)
     })
+  }
+
+  public addArticleCart(articleId: number): void {
+    let cartRequest: CartRequest = {
+      articleId: articleId,
+      quantity: this.articleQuantity
+    }
+
+    this._cartService.addArticle(cartRequest).subscribe({
+      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Articulo creado correctamente"),
+      error: (error: HttpErrorResponse) => this.showErrorModalCart(error)
+    })
+  }
+
+  private showSuccessModal(response: HttpResponse<any>, message: string) {
+    this.showModalMessage = true;
+    this.modalIcon = EM_ICON['success'];
+    this.modalTitle = "Proceso exitoso";
+    this.modalMessage = message;
+  }
+
+  private showErrorModalCart(error: HttpErrorResponse) {
+    this.openForm = false;
+    this.showModalMessage = true;
+    this.modalIcon = EM_ICON['error'];
+    this.modalTitle = "No se pudo agregar articulo al carrito";
+    this.modalMessage = error.error.message;
   }
 
   private assignArticleList(articleResponse: ArticleResponse): void {

@@ -1,11 +1,14 @@
 <div class="article-card">
   <div class="product-image">
-    <img src="/assets/images/article-placeholder2.jpeg" [alt]="articleData.name">
+    <img src="/assets/images/article-placeholder2.jpeg" [alt]="articleData?.name">
+    <div *ngIf="role == 'ROLE_CLIENT'" (click)="emitArticleCart()" class="cart-section">
+      <i class="fa-regular fa-cart-plus"></i>
+    </div>
   </div>
   <div class="product-details">
     <div class="product-details--text">
-      <h3 class="product-title">{{ articleData.name }}</h3>
-      <span>{{ articleData.brand.name }}</span>
+      <h3 class="product-title" (click)="redirectToArticleDetails()">{{ articleData?.name }}</h3>
+      <span>{{ articleData?.brand?.name }}</span>
     </div>
     <div class="product-rating">
       <span>⭐⭐⭐⭐☆</span>
@@ -13,7 +16,7 @@
     </div>
     <div class="product-price">
       <div>
-        <span class="discounted-price">${{ articleData.price }}</span>
+        <span class="discounted-price">${{ articleData?.price }}</span>
         <span class="original-price">${{ articleData.price + 100}}</span>
       </div>
       <span class="discount-percentage">-20%</span>

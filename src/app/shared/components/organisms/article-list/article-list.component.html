@@ -12,7 +12,7 @@
 
   <div class="articles-section--list">
     <div *ngFor="let article of articleList">
-      <article-card [articleData]="article"></article-card>
+      <article-card [articleData]="article" (articleCartId)="emitArticleCartId($event)"></article-card>
     </div>
   </div>
 </div>

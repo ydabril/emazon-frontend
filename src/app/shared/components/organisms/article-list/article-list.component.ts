@@ -12,6 +12,7 @@ export class ArticleListComponent {
   @Input() articleList!: Array<Article>
   @Output() paginationChange = new EventEmitter<any>();
   @Output() sortChange = new EventEmitter<ArticleSortBy>();
+  @Output() articleCartId = new EventEmitter<number>();
 
   emitPaginationChange(paginationRequest: PaginationRequest): void {
     this.paginationChange.emit(paginationRequest);
@@ -19,5 +20,9 @@ export class ArticleListComponent {
 
   emitSortBy(sortOption: ArticleSortBy): void  {
     this.sortChange.emit(sortOption);
+  }
+
+  emitArticleCartId(articleCartId: number) {
+    this.articleCartId.emit(articleCartId);
   }
 }
