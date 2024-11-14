@@ -1,12 +1,12 @@
 <div class="header">
-    <div class="header-logo">
+    <div class="header-logo" [routerLink]="['/landing']">
         <div class="header-menu">
             <img src="/assets/icons/menu-bars.svg" alt="">
         </div>
         <h1 class="header-logo--text">EMAZON</h1>
     </div>
     <div class="header-option">
-        <div class="header-option--cart" (click)="showCart()">
+        <div *ngIf="role == 'ROLE_CLIENT'" class="header-option--cart" (click)="showCart()">
             <img [src]="cartIcon" alt="">
         </div>
         <div class="header-option--user">

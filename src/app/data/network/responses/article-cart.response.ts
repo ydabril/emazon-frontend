@@ -7,6 +7,7 @@ export interface ArticleCart {
     description: string;
     price: number,
     quantity: number,
+    stock: number
     cartId: number,
     brand: Brand,
     categories: Category[],

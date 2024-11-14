@@ -13,8 +13,6 @@ export class Interceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     const requestClone = token ? request.clone({ setHeaders: { Authorization: `Bearer ${token}` } }) : request
     this._utils._requestOnAction.next(true);
-
-    console.log(requestClone);
     
 
     return next.handle(requestClone).pipe(finalize(() => this._utils._requestOnAction.next(false)));

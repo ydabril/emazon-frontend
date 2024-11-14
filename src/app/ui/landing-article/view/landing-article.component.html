@@ -47,6 +47,11 @@
     [articleList]="listDataArticle">
   </article-list>
 
-  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" [showArrowLeft]="hasPreviousPage"
-    [showArrowRight]="hasNextPage" (pageNumberChange)="nextPage($event)"></app-pagination>
+  <app-pagination 
+    [totalPages]="totalPages" 
+    [currentPage]="currentPage" 
+    [showArrowLeft]="hasPreviousPage"
+    [showArrowRight]="hasNextPage" 
+    (pageNumberChange)="nextPage($event)">
+  </app-pagination>
 </div>

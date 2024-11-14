@@ -62,7 +62,7 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
   }
 
   public getArticles(paginationRequest: PaginationRequest): void {
-    
+    this.paginationRequest = paginationRequest;
     this._articleService.getArticles(paginationRequest, this.page, this.sortBy).subscribe({
       next: (response: HttpResponse<ArticleResponse>) => this.assignArticleList(response.body as ArticleResponse),
       error: (error: HttpErrorResponse) => console.log(error)

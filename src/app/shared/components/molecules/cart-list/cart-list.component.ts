@@ -21,6 +21,7 @@ export class CartListComponent {
   articleCartList!: ArticleCart[];
   currentPage!: number;
   totalPages!: number;
+  totalPrice!: number;
   hasNextPage!: boolean;
   hasPreviousPage!: boolean;
   listDataCategory!: Array<Category>;
@@ -29,7 +30,7 @@ export class CartListComponent {
   categoryValue: string | null = null
   paginationRequestFilter = {
     sortDirection: 'ASC',
-    size: 50
+    size: 10
   }
   pageFilter = 0
 
@@ -52,7 +53,8 @@ export class CartListComponent {
     this.getArticles(this.paginationRequest)
   }
 
-  public getArticles(paginationRequest: PaginationRequest): void {   
+  public getArticles(paginationRequest: PaginationRequest): void { 
+    this.paginationRequest = paginationRequest;  
     this._cartService.getArticlesCart(paginationRequest, this.page, this.categoryValue, this.brandValue).subscribe({
       next: (response: HttpResponse<ArticleCartResponse>) => this.assignArticleCartList(response.body as ArticleCartResponse),
       error: (error: HttpErrorResponse) => console.log(error)
@@ -60,6 +62,7 @@ export class CartListComponent {
   }
 
   assignArticleCartList(articleCartRespose: ArticleCartResponse) {
+    this.totalPrice = articleCartRespose.totalPrice;
     this.totalPages = articleCartRespose.totalPages;
     this.currentPage = articleCartRespose.currentPage;
     this.hasNextPage = articleCartRespose.hasNextPage;

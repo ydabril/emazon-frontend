@@ -21,6 +21,7 @@ $header-height: 75px;
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
 
     &--text {
       font-family: 'Poppins';
@@ -43,6 +44,7 @@ $header-height: 75px;
 
     &--cart {
       margin-top: 3px;
+      cursor: pointer;
 
       img {
         width: 22px;

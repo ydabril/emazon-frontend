@@ -24,12 +24,15 @@
       </div>
     </div>
   </div>
+  <p>Precio total: {{ totalPrice}}</p>
   <ul>
     <li *ngFor="let articleCart of articleCartList">
       <div class="cart-data">
         <img src="/assets/images/article-placeholder2.jpeg" alt="">
         <div class="cart-data_text">
-          <p>{{ articleCart.name }}</p>
+          <p class="cart-data_text-title">{{ articleCart.name }}</p>
+          <span *ngIf="!articleCart.restockNextDate">stock: {{ articleCart.stock }}</span>
+          <span *ngIf="articleCart.restockNextDate">next restock date: {{ articleCart.restockNextDate }}</span>
           <p>${{ articleCart.price }} x <span>{{ articleCart.quantity }}</span></p>
         </div>
       </div>
@@ -38,6 +41,11 @@
       </div>
     </li>
   </ul>
-  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" [showArrowLeft]="hasPreviousPage"
-  [showArrowRight]="hasNextPage" (pageNumberChange)="nextPage($event)"></app-pagination>
+  <app-pagination 
+    [totalPages]="totalPages" 
+    [currentPage]="currentPage" 
+    [showArrowLeft]="hasPreviousPage"
+    [showArrowRight]="hasNextPage" 
+    (pageNumberChange)="nextPage($event)">
+  </app-pagination>
 </div>
