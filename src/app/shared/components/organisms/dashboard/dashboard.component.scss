@@ -2,8 +2,25 @@
 
 $header-height: 75px;
 
+body {
+    overflow-y: hidden;
+}
+
 .dashboard-container {
-    width: 100%;
     height: calc(100vh - $header-height);
     background-color: $color-bg-light-grey;
+    overflow-y: auto;
+    transition: 0.3s;
+}
+
+@media screen and (min-width: 1280px) {
+    .dashboard-container {
+        width: calc(100% - 270px);
+        margin-left: 270px;
+    }
+
+    .dashboard-expand {
+        width: 100%;
+        margin-left: 0;
+    }
 }

@@ -10,7 +10,7 @@
 <header></header>
 <div class="product-container">
   <div class="product-image">
-    <img src="/assets/images/article-placeholder2.jpeg" alt="Product Image">
+    <img [src]="articleData.imagePath" alt="Product Image">
   </div>
   <div class="product-info">
     <h2 class="product-title">{{ articleData?.name }}</h2>
@@ -52,4 +52,56 @@
       <button class="add-to-cart-btn" (click)="addArticleCart()">Add to Cart</button>
     </div>
   </div>
+</div>
+
+<div class="comments-container">
+  <div class="comments-section">
+    <div class="comment">
+      <div class="comment-header">
+        <div class="avatar">
+          <img src="/assets/images/avatar.svg" alt="User Avatar" />
+        </div>
+        <div class="user-info">
+          <span class="username">Surname Name</span>
+          <span class="time">10 Oct 2021</span>
+        </div>
+      </div>
+      <p class="comment-text">
+        Hi, my name is Lampbot and I am a computer program that helps me make a
+        Word Map. I know how to count, but I don’t understand how your world works
+        yet. Help me figure it out!
+      </p>
+      <div class="comment-actions">
+        <span class="reply">Reply</span>
+        <div class="like">
+          <i class="icon-heart"></i>
+          <span>12</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="comment">
+      <div class="comment-header">
+        <div class="avatar">
+          <img src="/assets/images/avatar.svg" alt="User Avatar" />
+        </div>
+        <div class="user-info">
+          <span class="username">Surname Name</span>
+          <span class="time">5 min ago</span>
+        </div>
+      </div>
+      <p class="comment-text">
+        Hi, my name is Lampbot and I am a computer program that helps me make a
+        Word Map. I know how to count, but I don’t understand how your world works
+        yet. Help me figure it out!
+      </p>
+      <div class="comment-actions">
+        <span class="reply">Reply</span>
+        <div class="like">
+          <i class="icon-heart"></i>
+          <span>12</span>
+        </div>
+      </div>
+    </div>
+  </div>  
 </div>

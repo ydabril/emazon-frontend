@@ -6,7 +6,7 @@ import { SupplyRequest } from "src/app/data/network/requests/supply.request";
 import { Article, ArticleResponse } from "src/app/data/network/responses/article.response";
 
 export interface IArticleService {
-    createArticle(categoryRequest: ArticleRequest): Observable<any>
+    createArticle(formData: FormData): Observable<any>
     getArticles(paginationRequest: PaginationRequest, page: number, sortByValue: string): Observable<HttpResponse<ArticleResponse>>
     getArticleByid(articleId: number): Observable<HttpResponse<Article>> 
     addSupply(supplyRequest: SupplyRequest): Observable<any>

@@ -3,5 +3,7 @@ export enum ProviderServices {
     brandService = 'brandService',
     articleService = 'articleService',
     userService = 'userService',
-    cartService = 'cartService'
+    cartService = 'cartService',
+    transactionService = 'transactionService',
+    reportService = 'reportService'
 }

@@ -29,10 +29,12 @@ import { FormLoginComponent } from "./components/molecules/form-login/form-login
 import { FormSupplyComponent } from "./components/molecules/form-supply/form-supply.component.";
 import { HeaderPageComponent } from "./components/organisms/header-page/header-page.component";
 import { CartListComponent } from "./components/molecules/cart-list/cart-list.component";
+import { LoaderComponent } from "./components/atoms/loader/loader.component";
 
 
 @NgModule({
   declarations: [
+    LoaderComponent,
     AppInputComponent,
     TextareaComponent,
     AppButtonComponent,
@@ -68,6 +70,7 @@ import { CartListComponent } from "./components/molecules/cart-list/cart-list.co
     RouterModule
   ],
   exports: [
+    LoaderComponent,
     AppInputComponent,
     TextareaComponent,
     AppButtonComponent,

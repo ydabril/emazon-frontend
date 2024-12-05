@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './data/providers/interceptors/error-interceptor.provider';
 import { InterceptorProvider } from './data/providers/interceptors/interceptor.provider';
+import { SharedModule } from './shared/shared.module';
+import { LoaderComponent } from './shared/components/atoms/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { InterceptorProvider } from './data/providers/interceptors/interceptor.p
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     ErrorInterceptorProvider,

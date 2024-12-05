@@ -4,41 +4,57 @@
 
 <header></header>
 
-<div class="container">
-  <div class="main-section">
-    <h1>Emazon: Todo lo que necesitas, en un solo Lugar</h1>
-    <p>Descubre una gran variedad de productos de marcas líderes en tecnología, moda, hogar y mucho más.</p>
-    <div class="shop-action-button">
-      <button>Shop now</button>
+<div class="main-section">
+  <div class="main-section--content">
+    <div class="main-section--content_text">
+      <h1>Emazon: Todo lo que necesitas, en un solo Lugar</h1>
+      <p>Descubre una gran variedad de productos de marcas líderes en tecnología, moda, hogar y mucho más.</p>
+      <div class="shop-action-button">
+        <button>Shop now</button>
+      </div>
+    
+      <div class="stats">
+        <div class="stats-item">
+          <p><strong>200+</strong></p>
+          <span>International Brands</span>
+        </div>
+        <div class="stats-item">
+          <p><strong>30,000+</strong></p>
+          <span>Happy Customers</span>
+        </div>
+        <div class="stats-item">
+          <p><strong>2,000+</strong></p>
+          <span>High-Quality Products</span>
+        </div>
+      </div>
+    
     </div>
-
-    <div class="stats">
-      <div class="stats-item">
-        <p><strong>200+</strong></p>
-        <span>International Brands</span>
-      </div>
-      <div class="stats-item">
-        <p><strong>30,000+</strong></p>
-        <span>Happy Customers</span>
-      </div>
-      <div class="stats-item">
-        <p><strong>2,000+</strong></p>
-        <span>High-Quality Products</span>
-      </div>
-    </div>
-
-    <div class="brand-section">
-      <div class="brand-section--item">
-        <p>MARCA 1</p>
-      </div>
-      <div class="brand-section--item">
-        <p>MARCA 2</p>
-      </div>
-      <div class="brand-section--item">
-        <p>MARCA 3</p>
-      </div>
+    <div class="main-section--content_img">
+      <img src="/assets/images/ecommerce-main2.png" alt="">
     </div>
   </div>
+
+  <div class="brand-section">
+    <div class="brand-section--item">
+      <img src="/assets/images/marca1.png" alt="">
+    </div>
+    <div class="brand-section--item">
+      <img src="/assets/images/marca3.png" alt="">
+    </div>
+    <div class="brand-section--item">
+      <img src="/assets/images/marca4.png" alt="">
+    </div>
+    <div class="brand-section--item">
+      <img src="/assets/images/marca4.webp" alt="">
+    </div>
+    <div class="brand-section--item">
+      <img src="/assets/images/marca8.webp" alt="">
+    </div>
+  </div>
+  
+</div>
+
+<div class="container">
 
   <article-list 
     (paginationChange)="getArticles($event)" 

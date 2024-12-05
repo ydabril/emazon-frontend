@@ -60,3 +60,10 @@
   width: auto;
   transition: 0.3s;
 }
+
+@media screen and (min-width: 1280px)  {
+  .modal {
+    width: 500px;
+    max-width: 500px;
+  }
+}

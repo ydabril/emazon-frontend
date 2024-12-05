@@ -8,7 +8,8 @@ export interface Article {
     price: number,
     quantity: number,
     brand: Brand,
-    categories: Category[]
+    categories: Category[],
+    imagePath: string
 }
 
 export interface ArticleResponse {

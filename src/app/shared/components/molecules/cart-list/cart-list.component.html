@@ -28,7 +28,7 @@
   <ul>
     <li *ngFor="let articleCart of articleCartList">
       <div class="cart-data">
-        <img src="/assets/images/article-placeholder2.jpeg" alt="">
+        <img [src]="articleCart.imagePath" alt="">
         <div class="cart-data_text">
           <p class="cart-data_text-title">{{ articleCart.name }}</p>
           <span *ngIf="!articleCart.restockNextDate">stock: {{ articleCart.stock }}</span>
@@ -48,4 +48,6 @@
     [showArrowRight]="hasNextPage" 
     (pageNumberChange)="nextPage($event)">
   </app-pagination>
+
+  <a class="buy-link" [routerLink]="['/sale']">comprar productos del carrito</a>
 </div>

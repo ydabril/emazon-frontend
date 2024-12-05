@@ -36,7 +36,8 @@ describe('ArticleCardComponent', () => {
         id: 1,
         name: 'name',
         description: 'description'
-      }
+      },
+      imagePath: 'image-url'
     };
     fixture.detectChanges();
     expect(component).toBeTruthy();
@@ -54,7 +55,8 @@ describe('ArticleCardComponent', () => {
         id: 1,
         name: 'brand name',
         description: 'description'
-      }
+      },
+      imagePath: 'image-url'
     };
     fixture.detectChanges();
 
@@ -66,7 +68,7 @@ describe('ArticleCardComponent', () => {
     expect(titleEl.textContent).toContain('Article');
     expect(brandEl.textContent).toContain('brand name');
     expect(discountedPriceEl.textContent).toContain('$200');
-    expect(originalPriceEl.textContent).toContain('$300');
+    expect(originalPriceEl.textContent).toContain('$40');
   });
 
   it('should assign role if token exists in localStorage', () => {
@@ -79,7 +81,8 @@ describe('ArticleCardComponent', () => {
   });
 
   it('should emit articleCartId with article ID when emitArticleCart is called', () => {
-    component.articleData = { id: 1, name: 'Article', description: '', price: 0, quantity: 0, categories: [], brand: { id: 1, name: '', description: '' } };
+    component.articleData = { id: 1, name: 'Article', description: '', price: 0, quantity: 0, categories: [], brand: { id: 1, name: '', description: '' } ,
+    imagePath: 'image-url' };
     jest.spyOn(component.articleCartId, 'emit');
     
     component.emitArticleCart();
@@ -88,7 +91,8 @@ describe('ArticleCardComponent', () => {
   });
 
   it('should navigate to article details page with article ID as query param', () => {
-    component.articleData = { id: 1, name: 'Article', description: '', price: 0, quantity: 0, categories: [], brand: { id: 1, name: '', description: '' } };
+    component.articleData = { id: 1, name: 'Article', description: '', price: 0, quantity: 0, categories: [], brand: { id: 1, name: '', description: '' },
+    imagePath: 'image-url' };
     const navigateSpy = jest.spyOn(router, 'navigate');
     
     component.redirectToArticleDetails();

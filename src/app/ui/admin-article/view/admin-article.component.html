@@ -1,20 +1,20 @@
 <app-modal-article 
-    *ngIf="openForm" 
-    modalTitle="Registrar Articulo"
-    [showForm]="openForm" 
-    (closeFormValue)="closeFormArticle($event)">
-    <div class="modal-form">
-        <div class="modal-drag-drop">
-          <drag-drop></drag-drop>
-        </div>
-        <div class="form-container">
-          <app-form-article 
-            [categoryList]="listDataCategory" 
-            [brandList]="listDataBrand"
-            (articleRequestEvent)="saveArticle($event)">
-          </app-form-article>
-        </div>
-      </div>
+  *ngIf="openForm" 
+  modalTitle="Registrar Artículo"
+  [showForm]="openForm" 
+  (closeFormValue)="closeFormArticle($event)">
+  <div class="modal-form">
+    <div class="modal-drag-drop">
+      <drag-drop (imageSelected)="onImageSelected($event)"></drag-drop>
+    </div>
+    <div class="form-container">
+      <app-form-article 
+        [categoryList]="listDataCategory" 
+        [brandList]="listDataBrand"
+        (articleRequestEvent)="saveArticle($event)">
+      </app-form-article>
+    </div>
+  </div>
 </app-modal-article>
 
 <app-modal-article 

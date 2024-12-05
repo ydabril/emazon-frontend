@@ -25,8 +25,26 @@ $header-height: 75px;
   }
 
   &--list {
+    margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .articles-section {
+    &--list {
+      gap: 40px;
+    }
+
+    .sort-pagination {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px;
+      padding: 10px 15px;
+    }
   }
 }

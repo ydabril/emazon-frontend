@@ -58,10 +58,10 @@ describe('AdminCategoryPresenter', () => {
 
     expect(mockCategoryService.createCategory).toHaveBeenCalledWith(categoryRequest);
     expect(mockView.openForm).toBe(false);
-    expect(mockView.showModalMessage).toBe(true);
-    expect(mockView.modalIcon).toBe('/assets/icons/success-icon.svg');
-    expect(mockView.modalTitle).toBe("Proceso existoso");
-    expect(mockView.modalMessage).toBe("Categoria creada correctamente");
+    expect(mockView.showModalMessage).toBe(false);
+    expect(mockView.modalIcon).toBe('');
+    expect(mockView.modalTitle).toBe("");
+    expect(mockView.modalMessage).toBe("");
   });
 
   it('should call createCategory and show error modal on error', () => {

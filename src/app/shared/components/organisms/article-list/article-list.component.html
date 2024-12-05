@@ -1,14 +1,18 @@
 <div class="articles-section">
   <h2 class="articles-section--title">All Articles</h2>
 
-  <div class="articles-section--sort">
-    <p>Ordenar por: </p>
-    <article-sort (sortChange)="emitSortBy($event)"></article-sort>
+  <div class="sort-pagination">
+    <div class="articles-section--sort">
+      <p>Ordenar por: </p>
+      <article-sort (sortChange)="emitSortBy($event)"></article-sort>
+    </div>
+  
+    <div class="pagination-section">
+      <pagination-bar (paginationChange)="emitPaginationChange($event)"></pagination-bar>
+    </div>
   </div>
 
-  <div class="pagination-section">
-    <pagination-bar (paginationChange)="emitPaginationChange($event)"></pagination-bar>
-  </div>
+  
 
   <div class="articles-section--list">
     <div *ngFor="let article of articleList">

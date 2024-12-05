@@ -1,6 +1,6 @@
 <div class="article-card">
   <div class="product-image">
-    <img src="/assets/images/article-placeholder2.jpeg" [alt]="articleData?.name">
+    <img [src]="articleData.imagePath" [alt]="articleData?.name">
     <div *ngIf="role == 'ROLE_CLIENT'" (click)="emitArticleCart()" class="cart-section">
       <i class="fa-solid fa-cart-plus"></i>
     </div>
@@ -16,8 +16,8 @@
     </div>
     <div class="product-price">
       <div>
-        <span class="discounted-price">${{ articleData?.price }}</span>
-        <span class="original-price">${{ articleData.price + 100}}</span>
+        <span class="discounted-price">${{ articleData.price }}</span>
+        <span class="original-price">${{ articleData.price * 0.2  }}</span>
       </div>
       <span class="discount-percentage">-20%</span>
     </div>

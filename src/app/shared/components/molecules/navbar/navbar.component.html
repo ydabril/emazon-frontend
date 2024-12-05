@@ -16,5 +16,9 @@
       <img [src]="configIcon">
       <a [routerLink]="['/admin-user']">Administrar Usuarios</a>
     </li>
+    <li *ngIf="userRole === 'ROLE_ADMIN'" routerLinkActive="link-active">
+      <img [src]="configIcon">
+      <a [routerLink]="['/report']">Reporte de ventas</a>
+    </li>
   </ul>
 </div>

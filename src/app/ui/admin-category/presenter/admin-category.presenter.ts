@@ -24,7 +24,6 @@ export class AdminCategoryPresenter implements AdminCategoryInputLogic {
   }
 
   public createCategory(categoryRequest: CategpryRequest) {
-    console.log(categoryRequest);
     this._categoryService.createCategory(categoryRequest).subscribe({
       next: (response: HttpResponse<any>) => this.showSuccessModal(response),
       error: (error: HttpErrorResponse) => this.showErrorModal(error)
@@ -32,6 +31,7 @@ export class AdminCategoryPresenter implements AdminCategoryInputLogic {
   }
 
   private showSuccessModal(response: HttpResponse<unknown>) {
+    this.getCategories(this._view.paginationRequest, 0);
     this._view.openForm = false;
     this._view.showModalMessage = true;
     this._view.modalIcon = EM_ICON['success'];

@@ -23,6 +23,7 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
   showDragDrop: boolean = true;
   showFormArticle: boolean = true;
   userRole: string | null = null;
+  selectedImage!: File;
 
   constructor(
     @Inject(ProviderServices.categoryService) private _categoryService: ICategoryService,
@@ -60,11 +61,24 @@ export class AdminArticleViewComponent extends AdminArticleOutputLogic implement
     })
   }
 
-  saveArticle(articleRequest: ArticleRequest): void  {
-    this._articleService.createArticle(articleRequest).subscribe({
-      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Articulo creado correctamente"),
-      error: (error: HttpErrorResponse) => this.showErrorModal(error)
-    })
+  onImageSelected(file: File) {
+    this.selectedImage = file;
+  }
+
+  saveArticle(articleRequest: ArticleRequest): void {
+    if (!this.selectedImage) {
+      console.error('No se seleccionó una imagen');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('articleData', new Blob([JSON.stringify(articleRequest)], { type: 'application/json' }));
+    formData.append('image', this.selectedImage);
+
+    this._articleService.createArticle(formData).subscribe({
+      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Artículo creado correctamente"),
+      error: (error: HttpErrorResponse) => this.showErrorModal(error),
+    });
   }
 
   private showSuccessModal(response: HttpResponse<any>, message: string) {

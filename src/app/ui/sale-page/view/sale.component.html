@@ -1,0 +1,43 @@
+<app-modal-message *ngIf="showModalMessage" [iconMessage]="modalIcon" [titleMessage]="modalTitle"
+  [textMessage]="modalMessage" (closeModalValue)="closeModalMessage()">
+</app-modal-message>
+
+<header></header>
+<div class="container">
+  <h1 class="cart__title">Your Cart</h1>
+
+  <main class="cart">
+    <section class="cart__items">
+      <!-- Item 1 -->
+      <div class="cart-item" *ngFor="let articleCart of articleCartList">
+        <img [src]="articleCart.imagePath" alt="Gradient Graphic T-shirt" class="cart-item__image">
+        <div class="cart-item__details">
+          <p class="cart-item__name">{{ articleCart.name }}</p>
+          <p class="cart-item__info">Marca: {{ articleCart.brand.name }}</p>
+          <div class="cart-item__categories">
+            <span *ngFor="let category of articleCart.categories">{{ category.name }}</span>
+          </div>
+          <p class="cart-item__price">${{ articleCart.price }}</p>
+        </div>
+        <div class="cart-item__actions">
+          <span class="cart-item__quantity">x {{ articleCart.quantity }}</span>
+        </div>
+      </div>
+    </section>
+  
+    <section class="cart__summary">
+      <h2 class="cart__summary-title">Order Summary</h2>
+      <div class="cart__summary-row">
+        <span>Discount (-20%)</span>
+        <span class="discount">-${{ totalPrice*0.2 }}</span>
+      </div>
+      <div class="cart__summary-total">
+        <span>Total</span>
+        <span>${{ totalPrice}}</span>
+      </div>
+  
+      <app-button ButtonLarge (click)="addSale()">Comprar</app-button>
+    </section>
+  </main>
+  
+</div>

@@ -1,0 +1,10 @@
+<app-dashboard>
+    <h2>Reporte de  <span>ventas</span></h2>
+
+    <app-table 
+        [columns]="reportColumns" 
+        [tableData]="reportList"
+        (paginationChange)="getReportList($event)"
+    ></app-table>
+
+</app-dashboard>

@@ -1,0 +1,12 @@
+
+<header></header>
+<div class="container">
+    <h2>Mis <span>compras</span></h2>
+
+    <app-table 
+    [columns]="reportColumns" 
+    [tableData]="reportList"
+    (paginationChange)="getReportList($event)"
+    ></app-table>
+  
+</div>

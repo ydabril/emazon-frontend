@@ -12,6 +12,7 @@ export interface ArticleCart {
     brand: Brand,
     categories: Category[],
     restockNextDate: null | string
+    imagePath: string
 }
 
 export interface ArticleCartResponse {

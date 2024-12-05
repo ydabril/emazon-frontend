@@ -28,6 +28,7 @@ export class AdminBrandPresenter implements AdminBrandInputLogic {
   }
 
   private showSuccessModal(response: HttpResponse<any>) {
+    this.getBrands(this._view.paginationRequest, 0);
     this._view.openForm = false;
     this._view.showModalMessage = true;
     this._view.modalIcon = EM_ICON['success'];

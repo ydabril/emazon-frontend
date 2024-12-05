@@ -13,6 +13,7 @@ import { ICategoryService } from 'src/app/domain/interfaces/category.interface';
 import { AdminArticleViewComponent } from './admin-article.component';
 import { ArticleResponse } from 'src/app/data/network/responses/article.response';
 import { PaginationRequest } from 'src/app/data/network/requests/pagination.request';
+import { EM_ICON } from 'src/app/core/constants/em-icons';
 
 describe('AdminArticleViewComponent', () => {
   let component: AdminArticleViewComponent;
@@ -93,34 +94,66 @@ describe('AdminArticleViewComponent', () => {
       categoryIds: [1, 3],
       brandId: 1
     };
-
+  
+    const mockFile = new File(['image'], 'test-image.jpg', { type: 'image/jpeg' });
+    component.onImageSelected(mockFile); // Simular selección de imagen
     const response: HttpResponse<any> = new HttpResponse({ body: null });
     mockArticleService.createArticle.mockReturnValue(of(response));
-
+  
     component.saveArticle(articleRequest);
-
-    expect(mockArticleService.createArticle).toHaveBeenCalledWith(articleRequest);
+  
+    const formData = new FormData();
+    formData.append(
+      'articleData',
+      new Blob([JSON.stringify(articleRequest)], { type: 'application/json' })
+    );
+    formData.append('image', mockFile);
+  
+    expect(mockArticleService.createArticle).toHaveBeenCalledWith(formData);
     expect(component.openForm).toBe(false);
     expect(component.showModalMessage).toBe(true);
-    expect(component.modalIcon).toBe('/assets/icons/success-icon.svg');
+    expect(component.modalIcon).toBe(EM_ICON['success']);
     expect(component.modalTitle).toBe("Proceso exitoso");
-    expect(component.modalMessage).toBe("Articulo creado correctamente");
+    expect(component.modalMessage).toBe("Artículo creado correctamente");
   });
 
   it('should show error modal on save article failure', () => {
-    const articleRequest = { name: 'New Article', description: 'Description', quantity: 1, price: 10000, categoryIds: [1, 3], brandId: 1 };
-    const errorResponse = new HttpErrorResponse({ error: { message: 'Error creating article' } });
+    const articleRequest = {
+      name: 'New Article',
+      description: 'Description',
+      quantity: 1,
+      price: 10000,
+      categoryIds: [1, 3],
+      brandId: 1,
+    };
+  
+    const mockFile = new File(['image'], 'test-image.jpg', { type: 'image/jpeg' });
+    component.onImageSelected(mockFile);
+    
+    const errorResponse = new HttpErrorResponse({
+      status: 400,
+      error: { message: 'Error creating article' },
+    });
+  
     mockArticleService.createArticle.mockReturnValue(throwError(() => errorResponse));
-
+  
     component.saveArticle(articleRequest);
-
-    expect(mockArticleService.createArticle).toHaveBeenCalledWith(articleRequest);
+  
+    const formData = new FormData();
+    formData.append(
+      'articleData',
+      new Blob([JSON.stringify(articleRequest)], { type: 'application/json' })
+    );
+    formData.append('image', mockFile);
+  
+    expect(mockArticleService.createArticle).toHaveBeenCalledWith(formData);
     expect(component.openForm).toBe(false);
     expect(component.showModalMessage).toBe(true);
     expect(component.modalIcon).toBe('/assets/icons/error-icon.svg');
-    expect(component.modalTitle).toBe("Algo salió mal");
+    expect(component.modalTitle).toBe('Algo salió mal');
     expect(component.modalMessage).toBe('Error creating article');
   });
+  
 
   it('should toggle the navigation menu', () => {
     const initialExpandedState = component.isNavMenuExpanded;
@@ -196,4 +229,23 @@ describe('AdminArticleViewComponent', () => {
     component.closeFormSupply(false);
     expect(component.openFormSupply).toBe(false);
   });
+
+  it('should log error when no image is selected for saving an article', () => {
+    const articleRequest = {
+      name: 'New Article',
+      description: 'Description',
+      quantity: 1,
+      price: 10000,
+      categoryIds: [1, 3],
+      brandId: 1,
+    };
+  
+    console.error = jest.fn();
+  
+    component.saveArticle(articleRequest);
+  
+    expect(console.error).toHaveBeenCalledWith('No se seleccionó una imagen');
+    expect(mockArticleService.createArticle).not.toHaveBeenCalled();
+  });
+  
 });

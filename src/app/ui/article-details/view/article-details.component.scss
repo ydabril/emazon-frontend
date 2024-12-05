@@ -1,9 +1,13 @@
+@use "/src/assets/colors/colors.scss" as *;
+
 .product-container {
   display: flex;
   flex-direction: column;
   padding: 16px;
   font-family: Arial, sans-serif;
   margin-top: 80px;
+  border-radius: 15px;
+  background-color: #fff;
 
   .product-image {
     width: 100%;
@@ -90,6 +94,7 @@
       font-size: 0.9em;
       color: #666;
       margin-top: 8px;
+      word-wrap: break-word
     }
 
     .product-options {
@@ -182,6 +187,143 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .product-container {
+    position: relative;
+    width: auto;
+    display: flex;
+    max-width: 1200px;
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 100px;
+    gap: 50px;
+    flex-direction: row;
+
+    .product-image {
+      position: relative;
+      width: 450px;
+
+      img {
+        width: 100%;
+        height: 500px;
+        border-radius: 8px;
+      }
+    }
+
+    .product-info {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      border-left: 3px solid #e7e7e7;
+      padding-left: 50px;
+
+      .product-title {
+        font-size: 44px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.comments-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.comments-section {
+  margin: 0 auto;
+
+  .comment {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    .comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .user-info {
+        .username {
+          font-weight: bold;
+          color: #333;
+          display: block;
+        }
+
+        .time {
+          font-size: 0.9rem;
+          color: #999;
+        }
+      }
+    }
+
+    .comment-text {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .reply {
+        font-size: 0.9rem;
+        color: $color-purple;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .like {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: #333;
+
+        .icon-heart {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          margin-right: 5px;
+          color: #e0245e;
+        }
+
+        span {
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }

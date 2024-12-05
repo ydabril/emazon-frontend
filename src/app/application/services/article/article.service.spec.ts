@@ -40,13 +40,16 @@ describe('ArticleService', () => {
       brandId: 3
     };
 
-    service.createArticle(articleRequest).subscribe((response) => {
+    const formData = new FormData();
+    formData.append('articleData', new Blob([JSON.stringify(articleRequest)], { type: 'application/json' }));
+
+    service.createArticle(formData).subscribe((response) => {
       expect(response).toBeTruthy();
     });
 
-    const req = httpMock.expectOne(`${environment.API_URL}/article/all`);
+    const req = httpMock.expectOne(`${environment.API_URL}/article`);
     expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual(articleRequest);
+    expect(req.request.body).toEqual(formData);
     req.flush({});
   });
 
@@ -114,7 +117,8 @@ describe('ArticleService', () => {
       price: 100,
       quantity: 10,
       categories: [],
-      brand: { id: 1, name: 'Brand Name', description: 'Brand Description' }
+      brand: { id: 1, name: 'Brand Name', description: 'Brand Description' },
+      imagePath: 'image-url'
     };
 
     service.getArticleByid(articleId).subscribe((response) => {

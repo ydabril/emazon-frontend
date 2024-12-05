@@ -99,22 +99,22 @@ $header-height: 75px;
     transform: scale(1);
     opacity: 1;
     z-index: 1000;
-  
+
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
-  
+
       li {
         padding: 10px 15px;
         text-align: left;
         cursor: pointer;
         transition: background-color 0.2s ease;
-  
+
         &:hover {
           background-color: $menu-hover-bg;
         }
-  
+
         a {
           text-decoration: none;
           color: #333;
@@ -124,12 +124,12 @@ $header-height: 75px;
           font-family: 'Poppins';
           color: $color-purple;
         }
-  
+
         &.header-menu--logout {
           color: $logout-color;
           font-weight: bold;
           font-family: 'Poppins';
-  
+
           &:hover {
             background-color: $logout-hover-bg;
             color: $logout-hover-color;
@@ -140,87 +140,163 @@ $header-height: 75px;
   }
 }
 
+.main-section {
+  background-color: #f9f9f9;
+  position: relative;
+  padding-top: 10px;
+  width: 100%;
+  height: 530px;
+  margin-top: 75px;
+
+  &--content {
+    max-width: 1320px;
+    margin: 0 auto;
+
+    &_img {
+      display: none;
+    }
+  }
+
+  h1 {
+    font-family: 'Poppins';
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    margin: 15px 22px;
+    margin-top: 25px;
+  }
+
+  p {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    margin: 5px 22px;
+  }
+
+  .shop-action-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      position: relative;
+      width: 350px;
+      height: 50px;
+      border-radius: 15px;
+      background-color: $color-black;
+      color: $color-white;
+      font-family: 'Poppins';
+      margin: 15px auto;
+    }
+  }
+
+  .stats {
+    display: flex;
+    max-width: 350px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .stats-item {
+    max-width: 170px;
+
+    p {
+      font-size: 18px;
+    }
+
+    span {
+      color: $color-purple;
+      font-family: 'Poppins';
+      font-size: 12px;
+    }
+  }
+
+  .brand-section {
+    width: 100%;
+    height: 90px;
+    background-color: $color-black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    p {
+      color: $color-white;
+    }
+  }
+
+}
+
 .container {
   margin-top: $header-height;
   position: relative;
   width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
 
+@media screen and (min-width: 1280px) {
   .main-section {
-    background-color: $color-bg-light-grey;
-    position: relative;
-    padding-top: 10px;
-    width: 100%;
-    height: 530px;
-
-    h1 {
-      font-family: 'Poppins';
-      font-weight: 900;
-      font-size: 32px;
-      line-height: 1;
-      margin: 15px 22px;
-      margin-top: 25px;
-    }
-
-    p {
-      font-family: 'Poppins';
-      font-weight: 400;
-      font-size: 16px;
-      margin: 5px 22px;
-    }
-
     .shop-action-button {
-      width: 100%;
-      display: flex;
-      justify-content: center;
+      justify-content: start;
 
       button {
+        margin: 15px 0;
+      }
+    }
+
+    &--content {
+      display: flex;
+
+      &_text {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+
+        h1,p {
+          margin-left: 0;
+        }
+
+        h1 {
+          font-size: 50px;
+        }
+      }
+
+      &_img {
+        display: block;
         position: relative;
-        width: 350px;
-        height: 50px;
-        border-radius: 15px;
-        background-color: $color-black;
-        color: $color-white;
-        font-family: 'Poppins';
-        margin: 15px auto;
-      }
-    }
-
-    .stats {
-      display: flex;
-      max-width: 350px;
-      justify-content: space-around;
-      align-items: center;
-      text-align: center;
-      flex-wrap: wrap;
-      margin: 0 auto;
-    }
-
-    .stats-item {
-      max-width: 170px;
-
-      p {
-        font-size: 18px;
+        bottom: -50px;
       }
 
-      span {
-        font-family: 'Poppins';
-        font-size: 12px;
+      .stats {
+        margin: 0;
+        max-width: 1000px;
+        gap: 25px;
+        margin-top: 10px;
+
+        &-item {
+          max-width: 300px;
+        }
+
+        p {
+          font-size: 24px;
+        } 
+
+        span {
+          font-size: 20px;
+        }
       }
     }
+  }
 
-    .brand-section {
-      width: 100%;
-      height: 70px;
-      background-color: $color-purple;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 40px;
-
-      p {
-        color: $color-white;
-      }
-    }
-
+  .container {
+    margin-top: 100px;
   }
 }

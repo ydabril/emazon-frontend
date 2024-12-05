@@ -6,7 +6,7 @@
   z-index: 2;
   width: 0;
   height: 100%;
-  background-color: $color-purple;
+  background-color: $color-black;
   transition: 0.3s;
   overflow-x: hidden;
   overflow-y: auto;
@@ -26,6 +26,7 @@
       font-family: 'Poppins';
       padding-left: 5px;
       min-width: 270px;
+      transition: 0.1s;
 
       a {
         text-decoration: none;
@@ -33,11 +34,17 @@
       }
     }
 
+    li:hover:not(.link-active) {
+      background-color: $color-purple;
+    } 
+
     .link-active {
-      background-color: $color-white;
+      background-color: $color-purple-dark;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
 
       a {
-        color: $color-purple;
+        color: $color-white;
       }
     }
   }
@@ -45,4 +52,14 @@
 
 .nav-menu-expand {
   width: 270px;
+}
+
+@media screen and (min-width: 1280px)  {
+  .nav-menu {
+    width: 270px;
+  }
+
+  .nav-menu-expand {
+    width: 0;
+  }
 }

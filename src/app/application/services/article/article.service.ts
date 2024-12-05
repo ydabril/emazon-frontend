@@ -14,8 +14,8 @@ import { environment } from "src/environments/environment";
 export class ArticleService implements IArticleService {
   constructor(private _http: HttpClient) { }
 
-  public createArticle(articleRequest: ArticleRequest) {
-    return this._http.post<unknown>(`${environment.API_URL}/article/all`, articleRequest, { observe: 'response' });
+  public createArticle(formData: FormData) {
+    return this._http.post<unknown>(`${environment.API_URL}/article`, formData, { observe: 'response' });
   }
 
   public getArticles(paginationRequest: PaginationRequest, page: number, sortByValue: string): Observable<HttpResponse<ArticleResponse>> {

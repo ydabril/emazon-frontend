@@ -76,7 +76,7 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
     }
 
     this._cartService.addArticle(cartRequest).subscribe({
-      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Articulo creado correctamente"),
+      next: (response: HttpResponse<any>) => this.showSuccessModal(response, "Articulo agregado al carrito"),
       error: (error: HttpErrorResponse) => this.showErrorModalCart(error)
     })
   }
@@ -92,7 +92,7 @@ export class LandingArticleViewComponent extends LandingArticleOutputLogic imple
     this.openForm = false;
     this.showModalMessage = true;
     this.modalIcon = EM_ICON['error'];
-    this.modalTitle = "No se pudo agregar articulo al carrito";
+    this.modalTitle = "Algo salió mal";
     this.modalMessage = error.error.message;
   }
 
